@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import mainRouter from './routes';
 
 
 require('dotenv').config();
@@ -11,6 +12,7 @@ app.use(helmet());
 app.use(cors({
     origin: '*'
 }));
+app.use(mainRouter);
 
 const port: string = process.env.SERVER_PORT || '5000';
 
