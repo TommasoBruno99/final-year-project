@@ -6,11 +6,19 @@
   "author": "Tommaso Bruno",
   "license": "MIT",
   "scripts": {
+    "build": "tsc .",
+    "start": "node build/src/index.js",
     "dev": "ts-node-dev --respawn src/index.ts"
   },
   "dependencies": {
+    "@types/cors": "^2.8.8",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.9",
-    "express": "^4.17.1"
+    "@types/helmet": "^4.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.2.0"
   },
   "devDependencies": {
     "ts-node-dev": "^1.0.0",
