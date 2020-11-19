@@ -15,7 +15,7 @@ app.use(cors({
 const port: string = process.env.SERVER_PORT || '5000';
 
 
-app.listen(port, () => {
+app.listen(port, (): void => {
 
     console.log(`Server listening on port ${port}`);
 });
