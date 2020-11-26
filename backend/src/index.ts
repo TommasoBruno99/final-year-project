@@ -12,6 +12,7 @@ app.use(helmet());
 app.use(cors({
     origin: '*'
 }));
+app.use(express.json());
 app.use(mainRouter);
 
 const port: string = process.env.SERVER_PORT || '5000';
