@@ -1,12 +1,9 @@
-import { Router, Request, Response } from 'express';
-
+import { Router } from 'express';
+import AuthService from '../services/auth';
 
 const authRouter: Router = Router();
 
-authRouter.get('/', (req: Request, res: Response) => {
-
-    res.json('works');
-});
+authRouter.get('/', AuthService.loginService);
 
 
 export default authRouter;
