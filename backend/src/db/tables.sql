@@ -1,9 +1,17 @@
+DROP TABLE IF EXISTS user_project;
+DROP TABLE IF EXISTS user_team;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS team;
+DROP TABLE IF EXISTS project;
+
+
 CREATE TABLE user (
     id varchar(40) not null,
     first_name varchar(30) not null,
     last_name varchar(30) not null,
     email varchar(50) not null,
-    is_admin boolean not null,
+    password char(60) not null,
+    is_admin varchar(2) not null,
     last_login date not null,
     primary key(id)
 );
