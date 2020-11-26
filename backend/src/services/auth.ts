@@ -6,8 +6,8 @@ interface IauthService {
 
 class AuthService implements IauthService {
 
-    loginService = (req: Request, res: Response): void => {
-        res.json(req.body);
+    loginService = async (req: Request, res: Response): Promise<void> => {
+        await res.json({data: req.body});
     }
 }
 
