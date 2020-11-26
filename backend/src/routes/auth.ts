@@ -4,7 +4,7 @@ import AuthService from '../services/auth';
 
 const authRouter: Router = Router();
 
-authRouter.get(ROUTES.LOGIN, AuthService.loginService);
+authRouter.post(ROUTES.LOGIN, AuthService.loginService);
 
 
 export default authRouter;
