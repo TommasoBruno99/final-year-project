@@ -1,4 +1,3 @@
-import { Query } from 'mysql';
 import { User } from '../controllers/auth';
 import connection from '../db/db';
 
