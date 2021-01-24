@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 export const notFound = (req: Request, res: Response, next: NextFunction): void => {
     const notFoundError = new Error('Not Found');
