@@ -1,14 +1,14 @@
-import { User } from '../controllers/auth';
+import { RegisterUser } from '../controllers/auth';
 import connection from '../db/db';
 
 interface IAuthRepository {
-    findUserEmail: (email: string) => Promise<Array<User>>;
+    findUserEmail: (email: string) => Promise<Array<RegisterUser>>;
     insertNewUser: (id: string, first_name: string, last_name: string, email: string, password: string, isAdmin: boolean, last_login: Date) => Promise<void>;
 }
 
 class AuthRepository implements IAuthRepository {
 
-    findUserEmail = async (email: string): Promise<Array<User>> => {
+    findUserEmail = async (email: string): Promise<Array<RegisterUser>> => {
         
         return new Promise((resolve, reject) => {
             connection.query('SELECT * FROM user WHERE email = ?', [email], (err, result) => {
