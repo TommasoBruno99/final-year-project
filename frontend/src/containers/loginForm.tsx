@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormError } from '../components/form';
-import { Form, FormInner, FormTitle, FormInput, FormSubmit, FormDescription, FormLink } from '../components/index';
+import { Form, FormInner, FormTitle, FormInput, FormSubmit, FormDescription, FormLink } from '../components';
 import { LOGIN_API } from '../constants/api';
 
 const LoginFormContainer: React.FC = () => {
@@ -44,7 +44,7 @@ const LoginFormContainer: React.FC = () => {
     return (
         <Form>
             <FormInner method="POST" onSubmit={(e) => handleSignIn(e)}>
-                <FormTitle> Sign In </FormTitle>
+                <FormTitle> Login </FormTitle>
                 <FormInput 
                     type="text" 
                     placeholder="Enter email address"
@@ -59,8 +59,8 @@ const LoginFormContainer: React.FC = () => {
                 />
                 <FormSubmit disable={disabled}> Sign in </FormSubmit>
                 <FormDescription> 
-                    Already have an account?
-                    <FormLink to="signup"> Sign up </FormLink>
+                    Do not have an account?
+                    <FormLink to="register"> Register </FormLink>
                 </FormDescription>
                 {error ? 
                     <FormError>
