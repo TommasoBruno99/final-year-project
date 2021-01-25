@@ -15,6 +15,7 @@ export interface IFormTitle {
 export interface IFormInput {
     type: string;
     placeholder: string;
+    value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

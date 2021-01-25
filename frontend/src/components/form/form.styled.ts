@@ -98,3 +98,8 @@ export const Link = styled(ReactLink)`
         color: #c75454;
     }
 `;
+
+export const Error = styled.p`
+    color: red;
+    text-align: center;
+`;

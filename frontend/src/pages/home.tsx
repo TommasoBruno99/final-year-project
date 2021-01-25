@@ -1,10 +1,10 @@
 import React from 'react';
-import FormContainer from '../containers/form';
+import LoginFormContainer from '../containers/loginForm';
 
 const Home: React.FC = () => {
 
     return (
-        <FormContainer />
+        <LoginFormContainer />
     )
 }
 

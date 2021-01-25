@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Inner, Title, Input, Submit, Description, Link } from './form.styled';
+import { Container, Inner, Title, Input, Submit, Description, Error, Link } from './form.styled';
 import { IForm, IFormInner, IFormTitle, IFormInput, IFormSubmit, IFormDescription, IFormLink } from './interfaces';
 
 
@@ -30,10 +30,11 @@ export const FormTitle: React.FC<IFormTitle> = ({ children }) => {
     )
 }
 
-export const FormInput: React.FC<IFormInput> = ({ placeholder, type, onChange}) => {
+export const FormInput: React.FC<IFormInput> = ({ placeholder, type, value, onChange}) => {
 
     return (
         <Input 
+            value={value}
             type={type}
             placeholder={placeholder}
             onChange={onChange}
@@ -66,6 +67,15 @@ export const FormLink: React.FC<IFormLink> = ({ children, to }) => {
         <Link to={to}>
             { children }
         </Link>
+    )
+}
+
+export const FormError: React.FC = ({ children }) => {
+
+    return (
+        <Error>
+            { children }
+        </Error>
     )
 }
  
