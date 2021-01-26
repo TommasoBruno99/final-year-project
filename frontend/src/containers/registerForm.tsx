@@ -28,6 +28,7 @@ const RegisterFormContainer: React.FC = () => {
           Already have an account?
           <FormLink to="login"> Login</FormLink>
         </FormDescription>
+
         {error ? <FormError>{error}</FormError> : null}
       </FormInner>
     </Form>
