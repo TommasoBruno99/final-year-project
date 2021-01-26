@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { FormError } from "../components/form";
 import {
   Form,
   FormInner,
@@ -9,43 +7,24 @@ import {
   FormSubmit,
   FormDescription,
   FormLink,
+  FormError,
 } from "../components";
-import { LOGIN_API } from "../constants/api";
+import { logAuth } from "../utils/auth";
 
 const LoginFormContainer: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
-  const webHistory = useHistory<History>();
 
   const disabled = email === "" || password === "";
 
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const user = {
       email,
       password,
     };
-
-    await fetch(LOGIN_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.data.error) throw new Error(result.data.error.message);
-        localStorage.setItem("access_token", result.data.access_token);
-        webHistory.push("/home");
-      })
-      .catch((err) => {
-        setError(err.message);
-        setEmail("");
-        setPassword("");
-      });
+    logAuth(user, setError, setEmail, setPassword);
   };
 
   return (
