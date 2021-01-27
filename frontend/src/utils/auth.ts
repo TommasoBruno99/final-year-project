@@ -48,3 +48,10 @@ export const verifyAuth = (
       setUser(null);
     });
 };
+
+export const logoutAuth = () => {
+  if (localStorage.getItem("access_token"))
+    localStorage.removeItem("access_token");
+
+  window.location.href = "/login";
+};

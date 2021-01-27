@@ -1,4 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;600;800&display=swap");
+
 body {
-  background: black;
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fff5d7;
+  font-family: "Catamaran", sans-serif;
 }

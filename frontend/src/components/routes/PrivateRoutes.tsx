@@ -15,6 +15,7 @@ const PrivateRoute: React.FC<IPrivateRoute> = ({
   exact,
   user,
 }) => {
+  console.log(user);
   const render = () => {
     if (user) {
       return children;

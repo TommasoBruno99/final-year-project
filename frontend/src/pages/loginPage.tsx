@@ -1,11 +1,8 @@
-import React from 'react';
-import LoginFormContainer from '../containers/loginForm';
+import React from "react";
+import LoginForm from "../components/form";
 
-const Home: React.FC = () => {
+const LoginPage: React.FC = () => {
+  return <LoginForm />;
+};
 
-    return (
-        <LoginFormContainer />
-    )
-}
-
-export default Home;
+export default LoginPage;

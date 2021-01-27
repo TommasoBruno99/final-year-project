@@ -1,83 +1,87 @@
-import React from 'react';
+import React, { useState } from "react";
+import { Box, Flex, Text, Image } from "rebass/styled-components";
+import { Input, Label } from "@rebass/forms";
+import { logAuth } from "../../utils/auth";
+import planetImg from "../../images/image.png";
 
-import { Container, Inner, Title, Input, Submit, Description, Error, Link } from './form.styled';
-import { IForm, IFormInner, IFormTitle, IFormInput, IFormSubmit, IFormDescription, IFormLink } from './interfaces';
+const Form: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
+  const disabled = email === "" || password === "";
 
-const Form: React.FC<IForm> = ({ children }) => {
+  const handleSignIn = (e: React.FormEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    logAuth(user, setError, setEmail, setPassword);
+  };
 
-    return (
-        <Container> {children} </Container>
-    )
-}
-
-export const FormInner: React.FC<IFormInner> = ({ children, method, onSubmit }) => {
-    
-    return (
-        <Inner
-            method={method}
-            onSubmit={onSubmit}
-        > 
-            {children} 
-        </Inner>
-    )
-}
-
-export const FormTitle: React.FC<IFormTitle> = ({ children }) => {
-
-    return (
-        <Title> {children} </Title>
-    )
-}
-
-export const FormInput: React.FC<IFormInput> = ({ placeholder, type, value, onChange}) => {
-
-    return (
-        <Input 
-            value={value}
-            type={type}
-            placeholder={placeholder}
-            onChange={onChange}
-        /> 
-    )
-}
-
-
-export const FormSubmit: React.FC<IFormSubmit> = ({ children, disable }) => {
-
-    return (
-        <Submit disabled={disable}>
-            { children }
-        </Submit>
-    )
-}
-
-export const FormDescription: React.FC<IFormDescription> = ({ children }) => {
-
-    return (
-        <Description>
-            { children }
-        </Description>
-    )
-}
-
-export const FormLink: React.FC<IFormLink> = ({ children, to }) => {
-
-    return (
-        <Link to={to}>
-            { children }
-        </Link>
-    )
-}
-
-export const FormError: React.FC = ({ children }) => {
-
-    return (
-        <Error>
-            { children }
-        </Error>
-    )
-}
- 
+  return (
+    <Box
+      as="form"
+      method="post"
+      maxWidth="900px"
+      mx="auto"
+      mt="5em"
+      onSubmit={handleSignIn}
+    >
+      <Flex justifyItems="center" width="100%" justifyContent="center">
+        <Flex flexDirection="column" width="50%">
+          {error ? (
+            <Box width="100%" mb="1.3em">
+              <Text width="100%" color="red">
+                {error}
+              </Text>
+            </Box>
+          ) : null}
+          <Box width="100%" mb="1.5em">
+            <Label mb="0.5em"> EMAIL </Label>
+            <Input
+              type="text"
+              value={email}
+              placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{ outline: "none" }}
+            ></Input>
+          </Box>
+          <Box width="100%" mb="1.4em">
+            <Label mb="0.5em"> PASSWORD </Label>
+            <Input
+              type="password"
+              value={password}
+              placeholder="Enter password"
+              onChange={(e) => setPassword(e.target.value)}
+              sx={{ outline: "none" }}
+            ></Input>
+          </Box>
+          <Box width="100%">
+            <Input
+              value="Sign In"
+              type="submit"
+              disabled={disabled}
+              sx={{
+                cursor: "pointer",
+                ":disabled": {
+                  opacity: "0.5",
+                },
+                ":hover": {
+                  backgroundColor: "#3A2234",
+                  color: "white",
+                },
+              }}
+            />
+          </Box>
+          <Box width="100%">
+            <Image src={planetImg} />
+          </Box>
+        </Flex>
+      </Flex>
+    </Box>
+  );
+};
 
 export default Form;
