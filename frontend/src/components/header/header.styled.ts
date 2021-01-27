@@ -17,3 +17,5 @@ export const LinkButton = styled(Link)`
     cursor: pointer;
   }
 `;
+
+export const ButtonStyled = LinkButton;

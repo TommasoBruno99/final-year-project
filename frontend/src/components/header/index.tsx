@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box as Container, Flex, Text, Button } from "rebass/styled-components";
+import { Box as Container, Flex, Text } from "rebass/styled-components";
 import { logoutAuth } from "../../utils/auth";
-import { LinkButton } from "./header.styled";
+import { LinkButton, ButtonStyled } from "./header.styled";
 
 interface IHeader {
   user: Object | null;
@@ -28,7 +28,7 @@ const Header: React.FC<IHeader> = ({ user }) => {
               <Link component={LinkButton} to="/profile">
                 PROFILE
               </Link>
-              <Button onClick={logoutAuth}>LOGOUT</Button>
+              <ButtonStyled onClick={logoutAuth}>LOGOUT</ButtonStyled>
             </Flex>
           )}
         </Flex>
