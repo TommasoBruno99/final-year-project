@@ -5,38 +5,34 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import "normalize.css";
-import "./global.css";
-import LoginPage from "./pages/loginPage";
-import PublicRoute from "./components/routes/PublicRoute";
-import PrivateRoute from "./components/routes/PrivateRoutes";
-import HomePage from "./pages/homePage";
-import { useAuth } from "./hooks/useAuth";
-import Header from "./components/header";
-import ProfilePage from "./pages/profilePage";
+import { LoginPage, HomePage, ProfilePage } from "./pages";
+import HeaderContainer from "./containers/header.container";
+import { PrivateRoute, PublicRoute } from "./components";
+import { AuthContextProvider } from "./context/authContext";
 
 const App: React.FC = () => {
-  const user = useAuth();
   return (
-    <Router>
-      <Header user={user} />
-      <Switch>
-        <Route path="/">
-          <Route exact path="/">
-            <Redirect to={{ pathname: "/login" }} />
-            <PublicRoute exact path="/login" user={user}>
+    <>
+      <AuthContextProvider>
+        <Router>
+          <HeaderContainer />
+          <Switch>
+            <Route exact path="/">
+              <Redirect to={{ pathname: "/login" }} />
+            </Route>
+            <PublicRoute exact path="/login">
               <LoginPage />
             </PublicRoute>
-            <PrivateRoute exact path="/home" user={user}>
+            <PrivateRoute exact path="/home">
               <HomePage />
             </PrivateRoute>
-            <PrivateRoute exact path="/profile" user={user}>
+            <PrivateRoute exact path="/profile">
               <ProfilePage />
             </PrivateRoute>
-          </Route>
-        </Route>
-      </Switch>
-    </Router>
+          </Switch>
+        </Router>
+      </AuthContextProvider>
+    </>
   );
 };
 

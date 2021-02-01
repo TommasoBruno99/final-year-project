@@ -1,5 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
+import React from "react";
+import { render } from "react-dom";
+import App from "./app";
+import "normalize.css";
+import "./global.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));

@@ -1,13 +1,15 @@
 import { LOGIN_API, VERIFY_API } from "../constants/api";
+import { IUser } from "../context/authContext";
 
-export const logAuth = (
+export const logAuth = async (
   user: Object,
   setError: React.Dispatch<React.SetStateAction<string | null>>,
   setEmail: React.Dispatch<React.SetStateAction<string>>,
-  setPassword: React.Dispatch<React.SetStateAction<string>>
+  setPassword: React.Dispatch<React.SetStateAction<string>>,
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>
 ) => {
   setError(null);
-  fetch(LOGIN_API, {
+  await fetch(LOGIN_API, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,8 +19,25 @@ export const logAuth = (
     .then((res) => res.json())
     .then((result) => {
       if (result.data.error) throw new Error(result.data.error.message);
-      localStorage.setItem("access_token", result.data.access_token);
-      window.location.href = "/home";
+      localStorage.setItem(
+        "log_user",
+        JSON.stringify({
+          id: "adasd",
+          first_name: "dsda",
+          last_login: new Date(),
+          last_name: "dassd",
+          email: "",
+          access_token: result.data.access_token,
+        })
+      );
+      setUser({
+        id: "adasd",
+        first_name: "dsda",
+        last_login: new Date(),
+        last_name: "dassd",
+        email: "",
+        access_token: result.data.access_token,
+      });
     })
     .catch((err) => {
       setError(err.message);
@@ -27,11 +46,11 @@ export const logAuth = (
     });
 };
 
-export const verifyAuth = (
+export const verifyAuth = async (
   token: string,
-  setUser: React.Dispatch<React.SetStateAction<Object | null>>
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>
 ) => {
-  fetch(VERIFY_API, {
+  await fetch(VERIFY_API, {
     method: "POST",
     headers: {
       Authentication: token,
@@ -41,17 +60,23 @@ export const verifyAuth = (
     .then((result) => {
       if (result.data.error) throw new Error("Unable to verify");
       const user = result.data.user;
-      setUser(user);
+      setUser({
+        id: user.id,
+        first_name: user.first_name,
+        last_login: user.last_login,
+        email: "dadada",
+        last_name: user.last_name,
+        access_token: token,
+      });
     })
     .catch((e) => {
-      localStorage.removeItem("access_token");
+      localStorage.removeItem("log_user");
       setUser(null);
     });
 };
 
 export const logoutAuth = () => {
-  if (localStorage.getItem("access_token"))
-    localStorage.removeItem("access_token");
+  if (localStorage.getItem("log_user")) localStorage.removeItem("log_user");
 
   window.location.href = "/login";
 };

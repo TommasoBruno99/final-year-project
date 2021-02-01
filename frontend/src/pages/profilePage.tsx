@@ -1,8 +1,7 @@
 import React from "react";
-import ProfileCard from "../components/profileCard";
 
 const ProfilePage: React.FC = () => {
-  return <ProfileCard />;
+  return <p>PROFILE</p>;
 };
 
 export default ProfilePage;

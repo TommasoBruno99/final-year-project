@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { IUser } from "../context/authContext";
 import { verifyAuth } from "../utils/auth";
 
-export const useAuth = (): Object | null => {
-  const [user, setUser] = useState<Object | null>(null);
+export const useAuth = (): IUser | null => {
+  const [user, setUser] = useState<IUser | null>(null);
 
   useEffect(() => {
     if (!localStorage.getItem("access_token")) setUser(null);
