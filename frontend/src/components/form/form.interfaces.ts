@@ -17,6 +17,10 @@ export interface IFormInput {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+export interface IFormButton {
+  children: React.ReactNode;
+  disabled: boolean;
+}
 export interface IFormImage {
   src: string;
 }

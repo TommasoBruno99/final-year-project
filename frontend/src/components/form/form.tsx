@@ -1,6 +1,7 @@
 import React from "react";
 import {
   IForm,
+  IFormButton,
   IFormImage,
   IFormInput,
   IFormInputsBox,
@@ -61,8 +62,8 @@ export const FormInput: React.FC<IFormInput> = ({
   );
 };
 
-export const FormButton: React.FC = ({ children }) => {
-  return <Button> {children}</Button>;
+export const FormButton: React.FC<IFormButton> = ({ children, disabled }) => {
+  return <Button disabled={disabled}> {children}</Button>;
 };
 
 export const FormImage: React.FC<IFormImage> = ({ src }) => {

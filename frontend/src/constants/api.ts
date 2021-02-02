@@ -1,3 +1,5 @@
-export const LOGIN_API = "http://localhost:4444/api/v1/auth/login";
-export const REGISTER_API = "http://localhost:4444/api/v1/auth/register";
-export const VERIFY_API = "http://localhost:4444/api/v1/auth/verify";
+const HOST = "http://localhost:4444";
+const API_VERSION = "api/v1";
+
+export const LOGIN_API = `${HOST}/${API_VERSION}/auth/login`;
+export const VERIFY_API = `${HOST}/${API_VERSION}/auth/verify`;

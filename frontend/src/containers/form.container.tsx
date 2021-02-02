@@ -10,21 +10,25 @@ import {
   FormLabel,
 } from "../components";
 import planetImg from "../images/image.png";
+import { logAuth } from "../store/actions/auth/login";
+import { useAuthContext } from "../store/context/auth/authContext";
 
 const FormContainer: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const { state, dispatch } = useAuthContext();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    alert(email + " " + password);
+    logAuth({ email, password }, setEmail, setPassword, dispatch);
   };
 
   return (
     <Form method="post" onSubmit={handleSubmit}>
       <FormInner>
         <FormInputsInner>
+          {state.error ? state.error : null}
           <FormInputBox marginBottom="1.5em">
             <FormLabel> EMAIL </FormLabel>
             <FormInput
@@ -46,7 +50,9 @@ const FormContainer: React.FC = () => {
             />
           </FormInputBox>
           <FormInputBox>
-            <FormButton> SIGN IN </FormButton>
+            <FormButton disabled={state.isLoading}>
+              {state.isLoading ? "LOADING" : "SIGN IN"}{" "}
+            </FormButton>
           </FormInputBox>
           <FormInputBox>
             <FormImage src={planetImg} />

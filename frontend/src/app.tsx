@@ -8,7 +8,7 @@ import {
 import { LoginPage, HomePage, ProfilePage } from "./pages";
 import HeaderContainer from "./containers/header.container";
 import { PrivateRoute, PublicRoute } from "./components";
-import { AuthContextProvider } from "./context/authContext";
+import { AuthContextProvider } from "./store/context/auth/authContext";
 
 const App: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useAuthContext } from "../../context/authContext";
+import { useAuthContext } from "../../store/context/auth/authContext";
 
 interface IPrivateRoute {
   children: React.ReactNode;
@@ -10,9 +10,9 @@ interface IPrivateRoute {
 }
 
 const PrivateRoute: React.FC<IPrivateRoute> = ({ children, path, exact }) => {
-  const { user } = useAuthContext();
+  const { state } = useAuthContext();
   const render = () => {
-    if (user) {
+    if (state.isLoggedIn) {
       return children;
     } else {
       return <Redirect to={{ pathname: "/login" }} />;
