@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import FormContainer from "../../containers/form/form.container";
+import { useTitle } from "../../hooks/";
 
 const LoginPage: React.FC = () => {
-  useEffect(() => {
-    document.title = "Login";
-  }, []);
+  useTitle("Login");
   return <FormContainer />;
 };
 
