@@ -11,6 +11,15 @@ const authReducer = (state: IState, action: authActions) => {
         error: "",
         isLoading: false,
       };
+    case "logout":
+      return {
+        ...state,
+        isLoggedIn: false,
+        access_token: "",
+        error: "",
+        isLoading: false,
+        user: null,
+      };
     case "verify":
       return {
         ...state,
@@ -31,6 +40,7 @@ const authReducer = (state: IState, action: authActions) => {
         user: null,
         isLoggedIn: false,
         access_token: "",
+        isLoading: false,
         error: action.payload,
       };
     default:

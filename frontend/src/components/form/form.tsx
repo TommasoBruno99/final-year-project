@@ -2,14 +2,12 @@ import React from "react";
 import {
   IForm,
   IFormButton,
-  IFormImage,
   IFormInput,
   IFormInputsBox,
 } from "./form.interfaces";
 import {
   Button,
   Container,
-  Image,
   Inner,
   InnerBox,
   Input,
@@ -64,8 +62,4 @@ export const FormInput: React.FC<IFormInput> = ({
 
 export const FormButton: React.FC<IFormButton> = ({ children, disabled }) => {
   return <Button disabled={disabled}> {children}</Button>;
-};
-
-export const FormImage: React.FC<IFormImage> = ({ src }) => {
-  return <Image src={src} />;
 };

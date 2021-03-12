@@ -4,7 +4,7 @@ export const Container = styled.form`
   max-width: 900px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 5em;
+  margin-top: 10em;
 `;
 
 export const Inner = styled.div`
@@ -29,38 +29,39 @@ export const InnerBox = styled.div<InnerBoxProps>`
 `;
 
 export const Label = styled.label`
-  margin-bottom: 0.5em;
-  width: 100%;
-  color: #3a2234;
-  font-weight: 600;
+  color: var(--white-bg);
+  font-weight: 400;
 `;
 
 export const Input = styled.input`
+  margin-top: 1em;
   box-sizing: border-box;
   outline: none;
-  color: black;
+  color: var(--white-bg);
   background-color: transparent;
   width: 100%;
-  padding: 5px;
-  border: 1px solid #3a2234;
+  padding: 1em;
+  border: 2px solid var(--dark-bg);
+  border-radius: 10px;
 `;
 
 export const Button = styled.button`
   cursor: pointer;
-  border: 1px solid #3a2234;
-  background: transparent;
-  padding: 5px;
+  border: 1px solid var(--orange-bg);
+  border-radius: 10px;
+  background: var(--dark-bg);
+  padding: 0.8em;
   width: 100%;
-  :disabled {
-    opacity: "0.5";
-  }
-  :hover {
-    background-color: #3a2234;
-    color: white;
-  }
-`;
+  color: var(--white-bg);
+  font-weight: 600;
 
-export const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: var(--orange-bg);
+    color: var(--dark-bg);
+    border-color: var(--dark-bg);
+  }
 `;

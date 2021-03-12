@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import {
   Form,
   FormButton,
-  FormImage,
   FormInner,
   FormInput,
   FormInputBox,
   FormInputsInner,
   FormLabel,
-} from "../components";
-import planetImg from "../images/image.png";
-import { logAuth } from "../store/actions/auth/login";
-import { useAuthContext } from "../store/context/auth/authContext";
+} from "../../components";
+import { logAuth } from "../../store/actions/auth/login";
+import { useAuthContext } from "../../store/context/auth/authContext";
 
 const FormContainer: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -53,9 +51,6 @@ const FormContainer: React.FC = () => {
             <FormButton disabled={state.isLoading}>
               {state.isLoading ? "LOADING" : "SIGN IN"}{" "}
             </FormButton>
-          </FormInputBox>
-          <FormInputBox>
-            <FormImage src={planetImg} />
           </FormInputBox>
         </FormInputsInner>
       </FormInner>

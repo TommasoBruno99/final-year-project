@@ -1,38 +1,19 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
-import { LoginPage, HomePage, ProfilePage } from "./pages";
-import HeaderContainer from "./containers/header.container";
-import { PrivateRoute, PublicRoute } from "./components";
+import { BrowserRouter as Router } from "react-router-dom";
+import { HeaderContainer } from "./containers/";
 import { AuthContextProvider } from "./store/context/auth/authContext";
+import { Routes } from "./components/";
+import { GlobalStyles } from "./global_styles";
 
 const App: React.FC = () => {
   return (
-    <>
-      <AuthContextProvider>
-        <Router>
-          <HeaderContainer />
-          <Switch>
-            <Route exact path="/">
-              <Redirect to={{ pathname: "/login" }} />
-            </Route>
-            <PublicRoute exact path="/login">
-              <LoginPage />
-            </PublicRoute>
-            <PrivateRoute exact path="/home">
-              <HomePage />
-            </PrivateRoute>
-            <PrivateRoute exact path="/profile">
-              <ProfilePage />
-            </PrivateRoute>
-          </Switch>
-        </Router>
-      </AuthContextProvider>
-    </>
+    <AuthContextProvider>
+      <GlobalStyles />
+      <Router>
+        <HeaderContainer />
+        <Routes />
+      </Router>
+    </AuthContextProvider>
   );
 };
 

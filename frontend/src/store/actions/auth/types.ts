@@ -5,6 +5,10 @@ interface authLogin {
   readonly payload: string; // token
 }
 
+interface authLogout {
+  readonly type: "logout";
+}
+
 interface authVerify {
   readonly type: "verify";
   readonly payload: {
@@ -23,6 +27,11 @@ interface authError {
   readonly payload: string;
 }
 
-type authActions = authLogin | authVerify | authError | authLoading;
+type authActions =
+  | authLogin
+  | authVerify
+  | authError
+  | authLoading
+  | authLogout;
 
 export default authActions;

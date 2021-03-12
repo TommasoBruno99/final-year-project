@@ -5,7 +5,7 @@ export const tokenVerify = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const token = req.headers.authentication;
 
   if (!token) next(new Error("Unable to verify"));

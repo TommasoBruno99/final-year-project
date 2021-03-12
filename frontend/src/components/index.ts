@@ -6,11 +6,32 @@ import {
   FormInput,
   FormLabel,
   FormButton,
-  FormImage,
 } from "./form/form";
-import { Header, HeaderInner, HeaderFlex, HeaderTitle } from "./header/header";
+import {
+  Header,
+  HeaderInner,
+  HeaderTitle,
+  HeaderLink,
+  HeaderButton,
+} from "./shared/header/header";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
+import {
+  ProfileCard,
+  ProfileCardInner,
+  ProfileCardColumn,
+  ProfileCardRow,
+  ProfileCardLabel,
+  ProfileCardTitle,
+} from "./profile_card/profile_card";
+import {
+  Dashboard,
+  DashboardInner,
+  DashboardTitle,
+  DashboardName,
+  DashboardTextFlex,
+} from "./dashboard/dashboard";
+import Routes from "./routes";
 
 export {
   Form,
@@ -20,8 +41,23 @@ export {
   FormInput,
   FormLabel,
   FormButton,
-  FormImage,
+  Header,
+  HeaderInner,
+  HeaderTitle,
+  HeaderLink,
+  HeaderButton,
+  ProfileCard,
+  ProfileCardInner,
+  ProfileCardColumn,
+  ProfileCardRow,
+  ProfileCardLabel,
+  ProfileCardTitle,
+  Dashboard,
+  DashboardInner,
+  DashboardName,
+  DashboardTitle,
+  DashboardTextFlex,
+  PrivateRoute,
+  PublicRoute,
+  Routes,
 };
-
-export { Header, HeaderInner, HeaderFlex, HeaderTitle };
-export { PrivateRoute, PublicRoute };
