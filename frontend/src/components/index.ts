@@ -14,6 +14,12 @@ import {
   HeaderLink,
   HeaderButton,
 } from "./shared/header/header";
+import {
+  Footer,
+  FooterInner,
+  FooterSocialBox,
+  FooterLink,
+} from "./shared/footer/footer";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import {
@@ -46,6 +52,10 @@ export {
   HeaderTitle,
   HeaderLink,
   HeaderButton,
+  Footer,
+  FooterInner,
+  FooterSocialBox,
+  FooterLink,
   ProfileCard,
   ProfileCardInner,
   ProfileCardColumn,
