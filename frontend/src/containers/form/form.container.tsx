@@ -49,7 +49,7 @@ const FormContainer: React.FC = () => {
           </FormInputBox>
           <FormInputBox>
             <FormButton disabled={state.isLoading}>
-              {state.isLoading ? "LOADING" : "SIGN IN"}{" "}
+              {state.isLoading ? "LOADING" : "SIGN IN"}
             </FormButton>
           </FormInputBox>
         </FormInputsInner>
