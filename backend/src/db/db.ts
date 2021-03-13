@@ -1,16 +1,11 @@
-import { createConnection, Connection, MysqlError } from 'mysql';
+import { createConnection, Connection, MysqlError } from "mysql";
+import { database_config } from "./settings";
 
-const connection: Connection = createConnection({
-    host: 'localhost',
-    database: 'scheduling_project',
-    user: 'root',
-    password: 'password',
-    port: 3306
-});
+const connection: Connection = createConnection(database_config);
 
 connection.connect((error: MysqlError) => {
-    if (error) throw error;
-    else console.log('Connected succesfully to the database');
+  if (error) throw error;
+  else console.log("Connected succesfully to the database");
 });
 
 export default connection;
