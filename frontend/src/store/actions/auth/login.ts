@@ -1,5 +1,5 @@
 import { LOGIN_API } from "../../../constants/api";
-import authActions from "./types";
+import { authActions } from "./types";
 
 export const logAuth = async (
   user: Object,

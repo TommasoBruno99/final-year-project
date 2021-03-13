@@ -34,4 +34,4 @@ type authActions =
   | authLoading
   | authLogout;
 
-export default authActions;
+export type { authActions };

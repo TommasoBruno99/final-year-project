@@ -6,11 +6,11 @@ import {
   DashboardTextFlex,
   DashboardTitle,
 } from "../../components";
-import { useAuthContext } from "../../store/context/auth/authContext";
+import { useAuth } from "../../hooks";
 import { transformFirstLetterUppercase } from "../../utils/transformString";
 
 const DashboardContainer: React.FC = () => {
-  const { state } = useAuthContext();
+  const { state } = useAuth();
   return (
     <Dashboard>
       <DashboardInner>

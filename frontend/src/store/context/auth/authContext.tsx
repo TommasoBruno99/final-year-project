@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { verifyAuth } from "../../actions/auth/verify";
 import authReducer from "../../reducers/auth.reducer";
 import { IAuthContext, IState } from "./auth.context.interfaces";
@@ -17,7 +17,7 @@ const initialState: IState = {
   isLoading: false,
 };
 
-const authContext = React.createContext<IAuthContext>({
+export const authContext = React.createContext<IAuthContext>({
   state: initialState,
   dispatch: () => null,
 });
@@ -35,8 +35,4 @@ export const AuthContextProvider: React.FC = ({ children }) => {
       {children}
     </authContext.Provider>
   );
-};
-
-export const useAuthContext = () => {
-  return useContext(authContext);
 };

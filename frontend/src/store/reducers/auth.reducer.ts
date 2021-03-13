@@ -1,4 +1,4 @@
-import authActions from "../actions/auth/types";
+import { authActions } from "../actions/";
 import { IState } from "../context/auth/auth.context.interfaces";
 
 const authReducer = (state: IState, action: authActions) => {

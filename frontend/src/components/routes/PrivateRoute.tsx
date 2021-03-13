@@ -1,16 +1,10 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useAuthContext } from "../../store/context/auth/authContext";
+import { useAuth } from "../../hooks";
+import { IRoute } from "./routes.interfaces";
 
-interface IPrivateRoute {
-  children: React.ReactNode;
-  path: string;
-  exact: boolean;
-  render?: () => React.ReactNode;
-}
-
-const PrivateRoute: React.FC<IPrivateRoute> = ({ children, path, exact }) => {
-  const { state } = useAuthContext();
+const PrivateRoute: React.FC<IRoute> = ({ children, path, exact }) => {
+  const { state } = useAuth();
   const render = () => {
     if (state.isLoggedIn) {
       return children;

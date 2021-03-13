@@ -1,6 +1,6 @@
 import React from "react";
 import { logout } from "../../store/actions/auth/logout";
-import { useAuthContext } from "../../store/context/auth/authContext";
+import { useAuth } from "../../hooks";
 import {
   Header,
   HeaderInner,
@@ -13,7 +13,7 @@ const HeaderContainer: React.FC = () => {
   const {
     state: { isLoggedIn },
     dispatch,
-  } = useAuthContext();
+  } = useAuth();
 
   const logUserOut = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault();

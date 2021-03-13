@@ -9,13 +9,13 @@ import {
   FormLabel,
 } from "../../components";
 import { logAuth } from "../../store/actions/auth/login";
-import { useAuthContext } from "../../store/context/auth/authContext";
+import { useAuth } from "../../hooks";
 
 const FormContainer: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const { state, dispatch } = useAuthContext();
+  const { state, dispatch } = useAuth();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -1,5 +1,5 @@
 import React from "react";
-import FormContainer from "../../containers/form/form.container";
+import { FormContainer } from "../../containers/";
 import { useTitle } from "../../hooks/";
 
 const LoginPage: React.FC = () => {

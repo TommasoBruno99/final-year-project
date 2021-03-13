@@ -1,6 +1,6 @@
 import { VERIFY_API } from "../../../constants/api";
 import { IUser } from "../../context/auth/auth.context.interfaces";
-import authActions from "./types";
+import { authActions } from "./types";
 
 export const verifyAuth = async (
   token: string,

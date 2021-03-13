@@ -7,10 +7,10 @@ import {
   ProfileCardRow,
   ProfileCardTitle,
 } from "../../components";
-import { useAuthContext } from "../../store/context/auth/authContext";
+import { useAuth } from "../../hooks";
 
 const ProfileCardContainer: React.FC = () => {
-  const { state } = useAuthContext();
+  const { state } = useAuth();
 
   return (
     <ProfileCard>

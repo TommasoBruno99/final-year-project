@@ -1,4 +1,4 @@
-import authActions from "../../actions/auth/types";
+import { authActions } from "../../actions/";
 
 export interface IUser {
   id: string;
