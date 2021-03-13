@@ -5,23 +5,27 @@ export const Container = styled.div<{ isToggled: string }>`
   display: ${({ isToggled }) => (isToggled ? "flex" : "none")};
   z-index: 2;
   left: 5%;
-  bottom: ${({ isToggled }) => (isToggled ? "13%" : "-5%")};
+  bottom: -15%;
   width: 20%;
   background-color: var(--white-bg);
   border: 1px solid var(--dark-bg);
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  padding: 1.5em;
+  padding: 1em 2em;
   transition: bottom 1s ease-in;
-  animation: popup 1s;
+  animation: popup 3s;
 
   @keyframes popup {
-    from {
-      bottom: -2%;
+    0% {
+      bottom: -15%;
     }
-    to {
-      bottom: 13%;
+    50% {
+      bottom: 15%;
+    }
+
+    100% {
+      bottom: -15%;
     }
   }
 `;

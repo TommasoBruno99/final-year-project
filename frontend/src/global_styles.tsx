@@ -20,5 +20,6 @@ export const GlobalStyles = createGlobalStyle`
     body {
         font-family: "Catamaran", sans-serif;
         background-color: var(--blue-bg);
+        overflow: hidden;
     }
 `;

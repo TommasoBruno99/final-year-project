@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Error, ErrorMessage } from "../../components";
 import { useAuth } from "../../hooks";
 
 const ErrorContainer: React.FC = () => {
-  const {
-    state: { error },
-  } = useAuth();
+  const { state } = useAuth();
 
   return (
-    <Error isToggled={error}>
-      <ErrorMessage message={error} />
+    <Error isToggled={state.error}>
+      <ErrorMessage message={state.error} />
     </Error>
   );
 };
