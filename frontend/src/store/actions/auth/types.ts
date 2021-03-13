@@ -27,11 +27,16 @@ interface authError {
   readonly payload: string;
 }
 
+interface clearError {
+  readonly type: "clear_error";
+}
+
 type authActions =
   | authLogin
   | authVerify
   | authError
   | authLoading
-  | authLogout;
+  | authLogout
+  | clearError;
 
 export type { authActions };

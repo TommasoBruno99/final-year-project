@@ -23,6 +23,9 @@ export const logAuth = async (
     })
     .catch((err) => {
       dispatch({ type: "error", payload: err.message });
+      setTimeout(() => {
+        dispatch({ type: "clear_error" });
+      }, 2000);
       setEmail("");
       setPassword("");
     });

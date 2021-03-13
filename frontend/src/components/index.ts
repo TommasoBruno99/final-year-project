@@ -40,4 +40,6 @@ export {
   DashboardTextFlex,
 } from "./dashboard/dashboard";
 
+export { Error, ErrorMessage } from "./shared/error/error";
+
 export { Routes } from "./routes";

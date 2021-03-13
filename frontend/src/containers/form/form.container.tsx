@@ -26,7 +26,6 @@ const FormContainer: React.FC = () => {
     <Form method="post" onSubmit={handleSubmit}>
       <FormInner>
         <FormInputsInner>
-          {state.error ? state.error : null}
           <FormInputBox marginBottom="1.5em">
             <FormLabel> EMAIL </FormLabel>
             <FormInput
