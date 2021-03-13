@@ -1,44 +1,3 @@
-import {
-  Form,
-  FormInner,
-  FormInputsInner,
-  FormInputBox,
-  FormInput,
-  FormLabel,
-  FormButton,
-} from "./form/form";
-import {
-  Header,
-  HeaderInner,
-  HeaderTitle,
-  HeaderLink,
-  HeaderButton,
-} from "./shared/header/header";
-import {
-  Footer,
-  FooterInner,
-  FooterSocialBox,
-  FooterLink,
-} from "./shared/footer/footer";
-import PrivateRoute from "./routes/PrivateRoute";
-import PublicRoute from "./routes/PublicRoute";
-import {
-  ProfileCard,
-  ProfileCardInner,
-  ProfileCardColumn,
-  ProfileCardRow,
-  ProfileCardLabel,
-  ProfileCardTitle,
-} from "./profile_card/profile_card";
-import {
-  Dashboard,
-  DashboardInner,
-  DashboardTitle,
-  DashboardName,
-  DashboardTextFlex,
-} from "./dashboard/dashboard";
-import Routes from "./routes";
-
 export {
   Form,
   FormInner,
@@ -47,27 +6,38 @@ export {
   FormInput,
   FormLabel,
   FormButton,
+} from "./form/form";
+
+export {
   Header,
   HeaderInner,
   HeaderTitle,
   HeaderLink,
   HeaderButton,
+} from "./shared/header/header";
+
+export {
   Footer,
   FooterInner,
   FooterSocialBox,
   FooterLink,
+} from "./shared/footer/footer";
+
+export {
   ProfileCard,
   ProfileCardInner,
   ProfileCardColumn,
   ProfileCardRow,
   ProfileCardLabel,
   ProfileCardTitle,
+} from "./profile_card/profile_card";
+
+export {
   Dashboard,
   DashboardInner,
-  DashboardName,
   DashboardTitle,
+  DashboardName,
   DashboardTextFlex,
-  PrivateRoute,
-  PublicRoute,
-  Routes,
-};
+} from "./dashboard/dashboard";
+
+export { Routes } from "./routes";

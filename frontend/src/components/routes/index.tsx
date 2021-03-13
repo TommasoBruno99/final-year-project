@@ -1,9 +1,11 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { PublicRoute, PrivateRoute } from "..";
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
+
 import { LoginPage, HomePage, ProfilePage } from "../../pages";
 
-const Routes = () => {
+export const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
@@ -21,5 +23,3 @@ const Routes = () => {
     </Switch>
   );
 };
-
-export default Routes;
