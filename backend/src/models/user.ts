@@ -24,6 +24,7 @@ export default class User extends Model {
       id: { type: "integer" },
       firstName: { type: "string", minLength: 5, maxLength: 30 },
       lastName: { type: "string", minLength: 5, maxLength: 30 },
+      isAdmin: { type: "string" },
       email: { type: "string" },
       password: { type: "string", minLength: 8 },
     },
