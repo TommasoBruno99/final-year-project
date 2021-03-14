@@ -29,7 +29,7 @@ class AuthService {
     }
   };
 
-  loginService = async (loginUser: User): Promise<[boolean, string]> => {
+  loginService = async (loginUser: User): Promise<[boolean, any]> => {
     try {
       const resultQuery = await User.query().findOne({
         email: loginUser.email,
@@ -55,7 +55,13 @@ class AuthService {
             }
           );
 
-          return [true, jsonwebtoken];
+          return [
+            true,
+            {
+              user: jweb.decode(jsonwebtoken),
+              access_token: jsonwebtoken,
+            },
+          ];
         } else {
           throw new Error("Problem during login");
         }

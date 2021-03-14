@@ -57,7 +57,7 @@ class AuthController implements IAuthController {
           data: {
             action: "Log with existing user",
             sucess: result,
-            access_token: data,
+            result: data,
           },
         });
       }
