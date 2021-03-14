@@ -1,34 +1,26 @@
-import { LoginUser, RegisterUser } from "../controllers/auth";
-import AuthRepository from "../repositories/auth";
 import bcrypt from "bcrypt";
-import { v4 } from "uuid";
 import jweb from "jsonwebtoken";
+import User from "../models/user";
 
-interface IAuthService {
-  signUpService: (newUser: RegisterUser) => Promise<[boolean, string]>;
-  loginService: (loginUser: LoginUser) => Promise<[boolean, string]>;
-}
-class AuthService implements IAuthService {
-  signUpService = async (newUser: RegisterUser): Promise<[boolean, string]> => {
+class AuthService {
+  signUpService = async (newUser: User): Promise<[boolean, string]> => {
     try {
-      const resultQuery: RegisterUser[] = await AuthRepository.findUserEmail(
-        newUser.email
-      );
+      const resultQuery = await User.query()
+        .select("email")
+        .where("email", newUser.email);
 
-      if (resultQuery.length > 0) {
+      if (resultQuery) {
         throw new Error("Email already in use");
       } else {
-        const uniqueId: string = await v4();
         const hash = await bcrypt.hash(newUser.password, 8);
-        await AuthRepository.insertNewUser(
-          uniqueId,
-          newUser.first_name,
-          newUser.last_name,
-          newUser.email,
-          hash,
-          false,
-          new Date()
-        );
+        await User.query().insert({
+          firstName: newUser.firstName,
+          lastName: newUser.lastName,
+          email: newUser.email,
+          password: hash,
+          isAdmin: "no",
+          lastLogin: new Date(),
+        });
 
         return [true, ""];
       }
@@ -37,21 +29,21 @@ class AuthService implements IAuthService {
     }
   };
 
-  loginService = async (loginUser: LoginUser): Promise<[boolean, string]> => {
+  loginService = async (loginUser: User): Promise<[boolean, string]> => {
     try {
-      const resultQuery: RegisterUser[] = await AuthRepository.findUserEmail(
-        loginUser.email
-      );
+      const resultQuery = await User.query().findOne({
+        email: loginUser.email,
+      });
 
-      if (resultQuery.length > 0) {
-        if (await bcrypt.compare(loginUser.password, resultQuery[0].password)) {
+      if (resultQuery) {
+        if (await bcrypt.compare(loginUser.password, resultQuery.password)) {
           const returnObj = {
-            id: resultQuery[0].id,
-            first_name: resultQuery[0].first_name,
-            last_name: resultQuery[0].last_name,
-            email: resultQuery[0].email,
-            is_admin: resultQuery[0].is_admin,
-            last_login: resultQuery[0].last_login,
+            id: resultQuery.id,
+            firstName: resultQuery.firstName,
+            lastName: resultQuery.lastName,
+            email: resultQuery.email,
+            isAdmin: resultQuery.isAdmin,
+            lastLogin: resultQuery.lastLogin,
           };
 
           const token = process.env.JSON_TOKEN;
