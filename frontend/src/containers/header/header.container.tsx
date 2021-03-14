@@ -27,7 +27,7 @@ const HeaderContainer: React.FC = () => {
         {!isLoggedIn ? (
           <HeaderLink to="/login">LOGIN</HeaderLink>
         ) : (
-          <HeaderButton onClick={(e) => logUserOut}> LOGOUT</HeaderButton>
+          <HeaderButton onClick={logUserOut}> LOGOUT</HeaderButton>
         )}
       </HeaderInner>
     </Header>

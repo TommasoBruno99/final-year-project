@@ -2,7 +2,17 @@ import { IUser } from "../../context/auth/auth.context.interfaces";
 
 interface authLogin {
   readonly type: "login";
-  readonly payload: string; // token
+  readonly payload: {
+    access_token: string;
+    user: {
+      id: number;
+      firstName: string;
+      lastName: string;
+      isAdmin: string;
+      lastLogin: Date;
+      email: string;
+    };
+  }; // token
 }
 
 interface authLogout {

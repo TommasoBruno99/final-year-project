@@ -2,10 +2,11 @@ import { authActions } from "../../actions/";
 
 export interface IUser {
   id: string;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  isAdmin: string;
+  lastName: string;
   email: string;
-  last_login: Date | null;
+  lastLogin: Date | null;
 }
 
 export interface IState {

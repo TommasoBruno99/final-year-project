@@ -18,7 +18,7 @@ const ProfileCardContainer: React.FC = () => {
         <ProfileCardColumn>
           <ProfileCardRow>
             <ProfileCardLabel> First Name </ProfileCardLabel>
-            <ProfileCardTitle> {state.user!.first_name} </ProfileCardTitle>
+            <ProfileCardTitle> {state.user!.firstName} </ProfileCardTitle>
           </ProfileCardRow>
           <ProfileCardRow>
             <ProfileCardLabel> Email </ProfileCardLabel>
@@ -28,7 +28,7 @@ const ProfileCardContainer: React.FC = () => {
         <ProfileCardColumn>
           <ProfileCardRow>
             <ProfileCardLabel> Last Name </ProfileCardLabel>
-            <ProfileCardTitle> {state.user!.last_name} </ProfileCardTitle>
+            <ProfileCardTitle> {state.user!.lastName} </ProfileCardTitle>
           </ProfileCardRow>
         </ProfileCardColumn>
       </ProfileCardInner>

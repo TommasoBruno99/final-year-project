@@ -17,7 +17,7 @@ const DashboardContainer: React.FC = () => {
         <DashboardTextFlex>
           <DashboardTitle>Welcome Back,</DashboardTitle>
           <DashboardName>
-            {transformFirstLetterUppercase(state.user!.first_name)}
+            {transformFirstLetterUppercase(state.user!.firstName)}
           </DashboardName>
         </DashboardTextFlex>
       </DashboardInner>

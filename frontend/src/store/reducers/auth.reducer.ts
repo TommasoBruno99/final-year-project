@@ -7,7 +7,8 @@ const authReducer = (state: IState, action: authActions) => {
       return {
         ...state,
         isLoggedIn: true,
-        access_token: action.payload,
+        access_token: action.payload.access_token,
+        user: Object.assign(action.payload.user),
         error: "",
         isLoading: false,
       };

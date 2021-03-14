@@ -18,8 +18,17 @@ export const logAuth = async (
     .then((res) => res.json())
     .then((result) => {
       if (result.data.error) throw new Error(result.data.error.message);
-      window.localStorage.setItem("access_token", result.data.access_token);
-      dispatch({ type: "login", payload: result.data.access_token });
+      window.localStorage.setItem(
+        "access_token",
+        result.data.result.access_token
+      );
+      dispatch({
+        type: "login",
+        payload: {
+          access_token: result.data.access_token,
+          user: result.data.result.user,
+        },
+      });
     })
     .catch((err) => {
       dispatch({ type: "error", payload: err.message });

@@ -4,13 +4,7 @@ import authReducer from "../../reducers/auth.reducer";
 import { IAuthContext, IState } from "./auth.context.interfaces";
 
 const initialState: IState = {
-  user: {
-    id: "",
-    first_name: "",
-    last_name: "",
-    email: "",
-    last_login: null,
-  },
+  user: null,
   isLoggedIn: false,
   error: "",
   access_token: "",
