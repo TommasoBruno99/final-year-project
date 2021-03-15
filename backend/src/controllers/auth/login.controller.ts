@@ -1,5 +1,5 @@
 import { NextFunction, Response, Request } from "express";
-import { User } from "../../interfaces/auth";
+import { User } from "../../utils/interfaces/auth";
 import { loginService } from "../../services";
 
 export const loginController = async (
@@ -18,11 +18,9 @@ export const loginController = async (
       res.json({
         data: {
           action: "Log with existing user",
-          sucess: result,
-          result: {
-            user: result.user,
-            access_token: result.access_token,
-          },
+          sucess: true,
+          user: result.user,
+          access_token: result.access_token,
         },
       });
     }

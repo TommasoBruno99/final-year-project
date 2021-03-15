@@ -1,4 +1,6 @@
 import { signUpService } from "./auth/signup.service";
 import { loginService } from "./auth/login.service";
 
-export { signUpService, loginService };
+import { getScheduleOfUser } from "./schedules/schedulesByUser.service";
+
+export { signUpService, loginService, getScheduleOfUser };

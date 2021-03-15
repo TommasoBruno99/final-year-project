@@ -1,11 +1,11 @@
 import bcrypt from "bcrypt";
 import jweb from "jsonwebtoken";
 import { prisma } from "../..";
-import { LoginResponse, User } from "../../interfaces/auth";
+import { LoginResponse, User } from "../../utils/interfaces/auth";
 
 export const loginService = async (loginUser: User): Promise<LoginResponse> => {
   try {
-    const resultQuery = await prisma.user.findFirst({
+    const resultQuery = await prisma.user.findUnique({
       where: {
         email: loginUser.email,
       },
@@ -19,6 +19,7 @@ export const loginService = async (loginUser: User): Promise<LoginResponse> => {
           lastName: resultQuery.lastName,
           email: resultQuery.email,
           role: resultQuery.role,
+          seniority: resultQuery.seniority,
           updatedAt: resultQuery.updatedAt,
         } as User;
 

@@ -1,4 +1,4 @@
-import { SignUpResponse, User } from "../../interfaces/auth";
+import { SignUpResponse, User } from "../../utils/interfaces/auth";
 import bcrypt from "bcrypt";
 import { prisma } from "../../";
 

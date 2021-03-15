@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import joi from "joi";
-import { User } from "../services/auth";
+import { User } from "../utils/interfaces/auth";
 
 export const filterRegister = async (
   req: Request,

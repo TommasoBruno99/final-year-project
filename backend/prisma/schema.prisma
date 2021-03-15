@@ -12,6 +12,11 @@ enum Role {
   USER
 }
 
+enum Seniority {
+  JUNIOR
+  SENIOR
+}
+
 model User {
   @@map("user")
   id Int @default(autoincrement()) @id
@@ -20,8 +25,11 @@ model User {
   email String @unique @db.VarChar(60)
   password String @db.VarChar(60)
   role Role @default(USER)
+  seniority Seniority @default(JUNIOR)
   team Team? @relation(fields: [team_id], references: [id])
-  team_id Int?
+  team_id Int? 
+  project Project? @relation(fields: [project_id], references: [id])
+  project_id Int? 
   schedules Schedule[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -38,8 +46,20 @@ model Team {
 model Schedule {
   @@map("schedule")
   id Int @default(autoincrement()) @id
-  startingDay DateTime
-  endingDay DateTime
+  startingDay Int
+  startingMonth Int
+  startingYear Int
+  endingDay Int
+  endingMonth Int
+  endingYear Int
+  reason String @db.VarChar(255)
   user User @relation(fields: [user_id], references: [id])
   user_id Int
+}
+
+model Project {
+  @@map("project")
+  id Int @default(autoincrement()) @id
+  projectName String @db.VarChar(100)
+  user User[]
 }

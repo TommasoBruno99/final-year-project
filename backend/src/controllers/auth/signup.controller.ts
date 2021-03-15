@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "../../interfaces/auth";
+import { User } from "../../utils/interfaces/auth";
 import { signUpService } from "../../services";
 
 export const signUpController = async (

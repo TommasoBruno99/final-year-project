@@ -3,6 +3,11 @@ enum Role {
   ADMIN = "ADMIN",
 }
 
+enum Seniority {
+  JUNIOR = "JUNIOR",
+  SENIOR = "SENIOR",
+}
+
 // Login
 export interface User {
   id: number;
@@ -11,6 +16,7 @@ export interface User {
   email: string;
   password: string;
   role: Role;
+  seniority: Seniority;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -28,6 +34,7 @@ export interface NewUser {
   lastName: string;
   email: string;
   role: Role;
+  seniority: Seniority;
   createdAt: Date;
 }
 
