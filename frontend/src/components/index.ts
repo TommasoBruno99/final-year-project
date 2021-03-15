@@ -35,10 +35,10 @@ export {
 export {
   Dashboard,
   DashboardInner,
-  DashboardTitle,
   DashboardName,
-  DashboardTextFlex,
 } from "./dashboard/dashboard";
+
+export { Badge } from "./dashboard/badge/badge";
 
 export { Error, ErrorMessage } from "./shared/error/error";
 

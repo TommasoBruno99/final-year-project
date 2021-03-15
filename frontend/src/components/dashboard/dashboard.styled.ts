@@ -8,31 +8,21 @@ export const Container = styled.div`
   max-width: 1100px;
   border: 1px solid black;
   border-radius: 10px;
+  padding: 1em 0;
 `;
 
 export const Inner = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
-  padding: 1em;
-`;
-
-export const FlexText = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 `;
 
 export const Name = styled.h1`
   font-weight: 600;
-  color: black;
-  padding-left: 2em;
+  font-size: 1.5rem;
+  color: var(--orange-bg);
   margin: 0;
-`;
-
-export const Title = styled.h2`
-  font-weight: 600;
-  color: gray;
-  margin: 0;
+  margin-left: 1em;
 `;

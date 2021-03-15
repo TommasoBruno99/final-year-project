@@ -1,11 +1,21 @@
 import { authActions } from "../../actions/";
 
+enum Seniority {
+  JUNIOR = "JUNIOR",
+  SENIOR = "SENIOR",
+}
+
+enum Role {
+  USER = "USER",
+  ADMIN = "AMDIN",
+}
 export interface IUser {
   id: string;
   firstName: string;
-  isAdmin: string;
   lastName: string;
+  role: Role;
   email: string;
+  seniority: Seniority;
   lastLogin: Date | null;
 }
 

@@ -24,7 +24,7 @@ const authReducer = (state: IState, action: authActions) => {
     case "verify":
       return {
         ...state,
-        user: action.payload.user,
+        user: Object.assign(action.payload.user),
         isLoggedIn: true,
         access_token: action.payload.access_token,
         error: "",

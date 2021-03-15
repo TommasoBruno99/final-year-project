@@ -3,23 +3,23 @@ import {
   Dashboard,
   DashboardInner,
   DashboardName,
-  DashboardTextFlex,
-  DashboardTitle,
+  Badge,
 } from "../../components";
 import { useAuth } from "../../hooks";
 import { transformFirstLetterUppercase } from "../../utils/transformString";
 
 const DashboardContainer: React.FC = () => {
   const { state } = useAuth();
+
   return (
     <Dashboard>
       <DashboardInner>
-        <DashboardTextFlex>
-          <DashboardTitle>Welcome Back,</DashboardTitle>
-          <DashboardName>
-            {transformFirstLetterUppercase(state.user!.firstName)}
-          </DashboardName>
-        </DashboardTextFlex>
+        <DashboardName>
+          {transformFirstLetterUppercase(state.user!.firstName) +
+            " " +
+            transformFirstLetterUppercase(state.user!.lastName)}
+        </DashboardName>
+        <Badge> {state.user?.role} </Badge>
       </DashboardInner>
     </Dashboard>
   );
