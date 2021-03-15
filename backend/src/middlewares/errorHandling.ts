@@ -13,9 +13,10 @@ export const errorHandling = (
   error: Error,
   req: Request,
   res: Response,
-  next: NextFunction
+  _: NextFunction
 ): void => {
-  res.statusCode = error.message === "Not Found" ? 404 : 500;
+  const status = res.statusCode;
+  res.status(status ? status : 500);
   res.json({
     data: {
       error: {

@@ -1,5 +1,7 @@
 export const API_VERSION = "/api/v1";
 
-export const LOGIN = "/login";
-export const REGISTER = "/register";
-export const VERIFY = "/verify";
+export enum API_ENDPOINTS {
+  LOGIN = "/login",
+  REGISTER = "/register",
+  VERIFY = "/verify",
+}

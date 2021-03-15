@@ -1,17 +1,13 @@
 import { Router } from "express";
-import * as ROUTES from "../constants/routes";
-import AuthController from "../controllers/auth";
+import { API_ENDPOINTS } from "../constants/routes";
+import { loginController, signUpController } from "../controllers";
 import { filterRegister, filterLogin } from "../middlewares/filtersData";
 import { tokenVerify } from "../middlewares/tokenVerify";
 
 const authRouter: Router = Router();
 
-authRouter.post(
-  ROUTES.REGISTER,
-  filterRegister,
-  AuthController.signUpController
-);
-authRouter.post(ROUTES.LOGIN, filterLogin, AuthController.loginController);
-authRouter.post(ROUTES.VERIFY, tokenVerify);
+authRouter.post(API_ENDPOINTS.REGISTER, filterRegister, signUpController);
+authRouter.post(API_ENDPOINTS.LOGIN, filterLogin, loginController);
+authRouter.post(API_ENDPOINTS.VERIFY, tokenVerify);
 
 export default authRouter;

@@ -2,16 +2,12 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import mainRouter from "./routes";
-import Knex from "knex";
-import knexConfig from "../knexfile";
-import { Model } from "objection";
+import { PrismaClient } from "@prisma/client";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config();
 
-const knex = Knex(knexConfig.development);
-
-Model.knex(knex);
+export const prisma = new PrismaClient();
 
 const app: express.Application = express();
 
