@@ -9,6 +9,8 @@ export const Container = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   padding: 1em 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Inner = styled.div`

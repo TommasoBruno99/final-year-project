@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  Dashboard,
-  DashboardInner,
-  DashboardName,
-  Badge,
-} from "../../components";
+import { OptionsContainer } from "..";
+import { Dashboard, DashboardInner, DashboardName } from "../../components";
 import { useAuth } from "../../hooks";
 import { transformFirstLetterUppercase } from "../../utils/transformString";
+import BadgeContainer from "./badge/badge.container";
 
 const DashboardContainer: React.FC = () => {
   const { state } = useAuth();
@@ -19,8 +16,9 @@ const DashboardContainer: React.FC = () => {
             " " +
             transformFirstLetterUppercase(state.user!.lastName)}
         </DashboardName>
-        <Badge> {state.user?.role} </Badge>
+        <BadgeContainer> {state.user?.role} </BadgeContainer>
       </DashboardInner>
+      <OptionsContainer />
     </Dashboard>
   );
 };

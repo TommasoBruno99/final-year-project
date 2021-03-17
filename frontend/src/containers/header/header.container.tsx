@@ -23,7 +23,7 @@ const HeaderContainer: React.FC = () => {
   return (
     <Header>
       <HeaderInner>
-        <HeaderTitle> SCHEDULING SOFTWARE </HeaderTitle>
+        <HeaderTitle> HOLIDAYNOW </HeaderTitle>
         {!isLoggedIn ? (
           <HeaderLink to="/login">LOGIN</HeaderLink>
         ) : (

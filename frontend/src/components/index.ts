@@ -40,6 +40,13 @@ export {
 
 export { Badge } from "./dashboard/badge/badge";
 
+export {
+  OptionsContainer,
+  OptionsContainerInner,
+} from "./dashboard/scheduleOptions/scheduleOptions";
+
 export { Error, ErrorMessage } from "./shared/error/error";
+
+export { Button } from "./shared/button/button";
 
 export { Routes } from "./routes";
