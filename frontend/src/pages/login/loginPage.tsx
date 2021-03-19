@@ -1,10 +1,10 @@
 import React from "react";
-import { FormContainer } from "../../containers/";
+import Form from "../../components/form";
 import { useTitle } from "../../hooks/";
 
 const LoginPage: React.FC = () => {
   useTitle("Login");
-  return <FormContainer />;
+  return <Form />;
 };
 
 export default LoginPage;

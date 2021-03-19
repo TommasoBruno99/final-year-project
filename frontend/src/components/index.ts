@@ -1,14 +1,4 @@
 export {
-  Form,
-  FormInner,
-  FormInputsInner,
-  FormInputBox,
-  FormInput,
-  FormLabel,
-  FormButton,
-} from "./form/form";
-
-export {
   Footer,
   FooterInner,
   FooterSocialBox,

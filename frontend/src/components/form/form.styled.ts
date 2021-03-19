@@ -1,39 +1,36 @@
 import styled from "styled-components/macro";
 
-export const Container = styled.form`
+export const FormContainer = styled.form`
   max-width: 900px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 10em;
 `;
 
-export const Inner = styled.div`
+export const FormInner = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
   justify-items: center;
 `;
 
-export const InputsInner = styled.div`
+export const FormInputsInner = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
 `;
 
-type InnerBoxProps = {
-  marginBottom?: string;
-};
-export const InnerBox = styled.div<InnerBoxProps>`
+export const FormInnerBox = styled.div<{ marginBottom?: string }>`
   width: 100%;
   margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : 0)};
 `;
 
-export const Label = styled.label`
+export const FormLabel = styled.label`
   color: var(--white-bg);
   font-weight: 400;
 `;
 
-export const Input = styled.input`
+export const FormInput = styled.input`
   margin-top: 1em;
   box-sizing: border-box;
   outline: none;
@@ -45,7 +42,7 @@ export const Input = styled.input`
   border-radius: 10px;
 `;
 
-export const Button = styled.button`
+export const FormButton = styled.button`
   cursor: pointer;
   border: 1px solid var(--orange-bg);
   border-radius: 10px;

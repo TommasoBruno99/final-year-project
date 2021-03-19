@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import {
-  Form,
-  FormButton,
+  FormContainer,
   FormInner,
-  FormInput,
-  FormInputBox,
+  FormInnerBox,
   FormInputsInner,
+  FormInput,
+  FormButton,
   FormLabel,
-} from "../../components";
-import { logAuth } from "../../store/actions/auth/login";
+} from "./form.styled";
 import { useAuth } from "../../hooks";
+import { logAuth } from "../../store/actions";
 
-const FormContainer: React.FC = () => {
+const Form = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -23,38 +23,42 @@ const FormContainer: React.FC = () => {
   };
 
   return (
-    <Form method="post" onSubmit={handleSubmit}>
+    <FormContainer method="post" onSubmit={handleSubmit}>
       <FormInner>
         <FormInputsInner>
-          <FormInputBox marginBottom="1.5em">
+          <FormInnerBox marginBottom="1.5em">
             <FormLabel> EMAIL </FormLabel>
             <FormInput
               name="email"
               type="text"
               value={email}
               placeholder="Insert email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
             />
-          </FormInputBox>
-          <FormInputBox marginBottom="1.4em">
+          </FormInnerBox>
+          <FormInnerBox marginBottom="1.4em">
             <FormLabel> PASSWORD </FormLabel>
             <FormInput
               name="password"
               type="password"
               value={password}
               placeholder="Insert password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPassword(e.target.value)
+              }
             />
-          </FormInputBox>
-          <FormInputBox>
+          </FormInnerBox>
+          <FormInnerBox>
             <FormButton disabled={state.isLoading}>
               {state.isLoading ? "LOADING" : "SIGN IN"}
             </FormButton>
-          </FormInputBox>
+          </FormInnerBox>
         </FormInputsInner>
       </FormInner>
-    </Form>
+    </FormContainer>
   );
 };
 
-export default FormContainer;
+export default Form;
