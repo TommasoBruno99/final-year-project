@@ -9,14 +9,6 @@ export {
 } from "./form/form";
 
 export {
-  Header,
-  HeaderInner,
-  HeaderTitle,
-  HeaderLink,
-  HeaderButton,
-} from "./shared/header/header";
-
-export {
   Footer,
   FooterInner,
   FooterSocialBox,
