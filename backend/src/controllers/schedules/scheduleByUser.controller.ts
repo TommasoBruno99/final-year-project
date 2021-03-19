@@ -10,7 +10,8 @@ export const getSchedulesOfUserController = async (
     const user_id = parseInt(req.params.id);
     const result = await getScheduleOfUser(user_id);
 
-    res.json(result);
+    if (result.success) res.json(result);
+    else throw new Error(result.error);
   } catch (e) {
     next(e.message);
   }

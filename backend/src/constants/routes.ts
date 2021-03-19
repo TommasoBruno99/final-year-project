@@ -6,4 +6,5 @@ export enum API_ENDPOINTS {
   VERIFY = "/verify",
 
   GET_SCHEDULES_BY_USER = "/user/:id",
+  ADD_SCHEDULE = "/",
 }

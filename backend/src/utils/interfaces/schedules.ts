@@ -5,10 +5,11 @@ export interface Schedule {
   endingDay: number;
   endingMonth: number;
   endingYear: number;
+  reason: string;
 }
 
 export interface ScheduleResponse {
   success: boolean;
-  schedules?: Schedule[];
+  schedules?: Schedule[] | Schedule;
   error?: string;
 }
