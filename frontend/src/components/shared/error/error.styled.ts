@@ -1,12 +1,12 @@
 import styled from "styled-components/macro";
 
-export const Container = styled.div<{ isToggled: string }>`
+export const ErrorContainer = styled.div<{ isToggled: string }>`
   position: absolute;
   display: ${({ isToggled }) => (isToggled ? "flex" : "none")};
   z-index: 2;
-  left: 5%;
+  left: 10%;
   bottom: -15%;
-  width: 20%;
+  width: 80%;
   background-color: var(--white-bg);
   border: 1px solid var(--dark-bg);
   border-radius: 10px;
@@ -30,7 +30,7 @@ export const Container = styled.div<{ isToggled: string }>`
   }
 `;
 
-export const Message = styled.h2`
+export const ErrorMessage = styled.h2`
   font-size: 1.5rem;
   color: var(--dark-bg);
   text-align: center;
