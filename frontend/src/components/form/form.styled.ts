@@ -1,10 +1,21 @@
 import styled from "styled-components/macro";
 
 export const FormContainer = styled.form`
-  max-width: 900px;
+  width: 90%;
+  max-width: 500px;
+  padding: 2em;
   margin-right: auto;
   margin-left: auto;
   margin-top: 10em;
+  border: 1px solid white;
+  border-radius: 10px;
+  background: black;
+`;
+
+export const FormTitle = styled.h1`
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
 `;
 
 export const FormInner = styled.div`
@@ -17,7 +28,7 @@ export const FormInner = styled.div`
 export const FormInputsInner = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
 `;
 
 export const FormInnerBox = styled.div<{ marginBottom?: string }>`

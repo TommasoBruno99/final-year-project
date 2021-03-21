@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   FormContainer,
+  FormTitle,
   FormInner,
   FormInnerBox,
   FormInputsInner,
@@ -26,6 +27,7 @@ const Form = () => {
     <FormContainer method="post" onSubmit={handleSubmit}>
       <FormInner>
         <FormInputsInner>
+          <FormTitle> LOGIN </FormTitle>
           <FormInnerBox marginBottom="1.5em">
             <FormLabel> EMAIL </FormLabel>
             <FormInput
