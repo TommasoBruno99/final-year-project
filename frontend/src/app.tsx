@@ -5,6 +5,7 @@ import { Routes } from "./components/";
 import { GlobalStyles } from "./global_styles";
 import Header from "./components/shared/header";
 import Error from "./components/shared/error";
+import { FooterContainer } from "./containers";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Header />
         <Routes />
         <Error />
+        <FooterContainer />
       </Router>
     </AuthContextProvider>
   );

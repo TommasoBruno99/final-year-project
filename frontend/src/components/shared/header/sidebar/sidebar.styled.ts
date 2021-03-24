@@ -44,6 +44,20 @@ export const SideBarElement = styled(Link)`
   }
 `;
 
+export const SideBarElementClick = styled.p`
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
+`;
+
 export const SideBarClose = styled.div`
   position: absolute;
   font-size: 2rem;

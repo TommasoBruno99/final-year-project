@@ -1,11 +1,14 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import { useAuth } from "../../../../hooks";
+import { logout } from "../../../../store/actions";
 import {
   SideBarContainer,
   SideBarInner,
   SideBarWrapper,
   SideBarElement,
   SideBarClose,
+  SideBarElementClick,
 } from "./sidebar.styled";
 
 type props = {
@@ -14,6 +17,14 @@ type props = {
 };
 
 const SideBar = ({ isToggled, toggle }: props) => {
+  const { state, dispatch } = useAuth();
+
+  const logUserOut = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    logout(dispatch);
+    toggle(e);
+  };
+
   return (
     <SideBarContainer isToggled={isToggled}>
       <SideBarClose onClick={toggle}>
@@ -21,7 +32,13 @@ const SideBar = ({ isToggled, toggle }: props) => {
       </SideBarClose>
       <SideBarInner>
         <SideBarWrapper>
-          <SideBarElement to="/login"> Login </SideBarElement>
+          {!state.isLoggedIn ? (
+            <SideBarElement to="/login"> Login </SideBarElement>
+          ) : (
+            <SideBarElementClick onClick={logUserOut}>
+              Logout
+            </SideBarElementClick>
+          )}
         </SideBarWrapper>
       </SideBarInner>
     </SideBarContainer>

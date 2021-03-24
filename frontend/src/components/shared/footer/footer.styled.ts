@@ -5,7 +5,7 @@ export const Container = styled.footer`
   bottom: 0;
   overflow: hidden;
   width: 100%;
-  background-color: var(--dark-bg);
+  background-color: black;
 `;
 
 export const Inner = styled.div`
