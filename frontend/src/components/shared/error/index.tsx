@@ -5,11 +5,11 @@ import { useAuth } from "../../../hooks";
 const Error = () => {
   const { state } = useAuth();
 
-  return (
-    <ErrorContainer isToggled={state.error}>
+  return state.error ? (
+    <ErrorContainer data-testid="error" isToggled={state.error}>
       <ErrorMessage> {state.error} </ErrorMessage>
     </ErrorContainer>
-  );
+  ) : null;
 };
 
 export default Error;
