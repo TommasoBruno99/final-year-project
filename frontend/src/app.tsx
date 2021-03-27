@@ -4,7 +4,7 @@ import { AuthContextProvider } from "./store/context/auth/authContext";
 import { Routes } from "./components/";
 import { GlobalStyles } from "./global_styles";
 import Header from "./components/shared/header";
-import Error from "./components/shared/error";
+
 import { FooterContainer } from "./containers";
 
 const App: React.FC = () => {
@@ -14,7 +14,6 @@ const App: React.FC = () => {
       <Router>
         <Header />
         <Routes />
-        <Error />
         <FooterContainer />
       </Router>
     </AuthContextProvider>
