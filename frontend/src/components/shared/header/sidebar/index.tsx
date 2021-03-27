@@ -26,8 +26,8 @@ const SideBar = ({ isToggled, toggle }: props) => {
   };
 
   return (
-    <SideBarContainer isToggled={isToggled}>
-      <SideBarClose onClick={toggle}>
+    <SideBarContainer isToggled={isToggled} data-testid="sidebar-container">
+      <SideBarClose onClick={toggle} data-testid="sidebar-icon">
         <FaTimes />
       </SideBarClose>
       <SideBarInner>

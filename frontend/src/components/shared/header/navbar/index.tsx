@@ -23,7 +23,7 @@ const NavBar = ({ toggle }: props) => {
         <NavBarElementsWrapper>
           <NavBarElement to="/"> LOGIN </NavBarElement>
         </NavBarElementsWrapper>
-        <NavBarFa onClick={toggle}>
+        <NavBarFa onClick={toggle} data-testid="navbar-fa">
           <FaBars />
         </NavBarFa>
       </NavBarInner>
