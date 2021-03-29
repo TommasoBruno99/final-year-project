@@ -10,12 +10,13 @@ const scheduleRouter: Router = Router();
 
 scheduleRouter.get(
   API_ENDPOINTS.GET_SCHEDULES_BY_USER,
-
+  tokenVerify,
   getSchedulesOfUserController
 );
+
 scheduleRouter.post(
   API_ENDPOINTS.ADD_SCHEDULE,
-
+  tokenVerify,
   createScheduleController
 );
 
