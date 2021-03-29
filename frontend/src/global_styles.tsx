@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-    @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;600;800&display=swap");
-
     :root {
         --dark-bg: #1a1d22;
         --blue-bg: #30475e;
