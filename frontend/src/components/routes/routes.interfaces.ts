@@ -3,4 +3,5 @@ export interface IRoute {
   path: string;
   exact: boolean;
   render?: () => React.ReactNode;
+  isLoggedIn: boolean;
 }

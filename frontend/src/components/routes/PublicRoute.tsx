@@ -1,12 +1,15 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useAuth } from "../../hooks";
 import { IRoute } from "./routes.interfaces";
 
-const PublicRoute: React.FC<IRoute> = ({ children, path, exact }) => {
-  const { state } = useAuth();
+const PublicRoute: React.FC<IRoute> = ({
+  children,
+  path,
+  exact,
+  isLoggedIn,
+}) => {
   const render = () => {
-    if (!state.isLoggedIn) {
+    if (!isLoggedIn) {
       return children;
     } else {
       return <Redirect to={{ pathname: "/home" }} />;
