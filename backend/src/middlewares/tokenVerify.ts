@@ -27,7 +27,8 @@ export const tokenVerify = async (
         else throw new Error("Unable to verify");
       } else throw new Error("Unable to verify");
     } catch (e) {
-      next(new Error(e.message));
+      res.statusCode = 401;
+      next(e);
     }
   }
 };
