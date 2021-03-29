@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, render } from "@testing-library/react";
-import Error from "../components/shared/error";
+import Error from "../../components/shared/error";
 
 afterEach(cleanup);
 

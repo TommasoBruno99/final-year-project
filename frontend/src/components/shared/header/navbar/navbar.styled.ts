@@ -67,3 +67,19 @@ export const NavBarElement = styled(Link)`
     display: block;
   }
 `;
+
+export const NavBarElementClick = styled.p`
+  display: none;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:active {
+    border-bottom-color: red;
+  }
+
+  @media screen and (min-width: 780px) {
+    display: block;
+  }
+`;

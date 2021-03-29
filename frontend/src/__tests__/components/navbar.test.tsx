@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, fireEvent, render } from "@testing-library/react";
-import NavBar from "../components/shared/header/navbar";
+import NavBar from "../../components/shared/header/navbar";
 import { BrowserRouter } from "react-router-dom";
 
 const toggle = jest.fn();
@@ -11,7 +11,7 @@ describe("Navbar Component", () => {
   it("Should render properly", () => {
     const navbar = render(
       <BrowserRouter>
-        <NavBar toggle={toggle} />
+        <NavBar toggle={toggle} isLoggedIn={false} logout={() => null} />
       </BrowserRouter>
     );
 
@@ -22,7 +22,7 @@ describe("Navbar Component", () => {
   it("Should call function toggle when the fa icon is clicked", () => {
     const navbar = render(
       <BrowserRouter>
-        <NavBar toggle={toggle} />
+        <NavBar toggle={toggle} isLoggedIn={false} logout={() => null} />
       </BrowserRouter>
     );
 

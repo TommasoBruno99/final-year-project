@@ -1,7 +1,7 @@
 import React from "react";
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import SideBar from "../components/shared/header/sidebar";
+import SideBar from "../../components/shared/header/sidebar";
 
 const toggle = jest.fn();
 
@@ -11,7 +11,12 @@ describe("Sidebar Component", () => {
   it("Should render properly", () => {
     const sidebar = render(
       <BrowserRouter>
-        <SideBar toggle={toggle} isToggled={true} />
+        <SideBar
+          toggle={toggle}
+          isToggled={true}
+          isLoggedIn={false}
+          logout={() => null}
+        />
       </BrowserRouter>
     );
 
@@ -21,7 +26,12 @@ describe("Sidebar Component", () => {
   it("Should have negative top if isToggled prop is false", () => {
     const sidebar = render(
       <BrowserRouter>
-        <SideBar toggle={toggle} isToggled={false} />
+        <SideBar
+          toggle={toggle}
+          isToggled={false}
+          isLoggedIn={false}
+          logout={() => null}
+        />
       </BrowserRouter>
     );
 
