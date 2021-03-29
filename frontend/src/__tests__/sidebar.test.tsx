@@ -1,7 +1,7 @@
 import React from "react";
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import SideBar from ".";
+import SideBar from "../components/shared/header/sidebar";
 
 const toggle = jest.fn();
 

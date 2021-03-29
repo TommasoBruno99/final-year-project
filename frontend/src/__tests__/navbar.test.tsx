@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, fireEvent, render } from "@testing-library/react";
-import NavBar from ".";
+import NavBar from "../components/shared/header/navbar";
 import { BrowserRouter } from "react-router-dom";
 
 const toggle = jest.fn();
