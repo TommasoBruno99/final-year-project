@@ -1,5 +1,5 @@
 import React from "react";
-import HolidaysOptions from "../../components/holidaysOptions";
+import HolidaysForm from "../../components/holidaysForm";
 import ProfileCard from "../../components/profileCard";
 import { useTitle } from "../../hooks";
 
@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <ProfileCard />
-      <HolidaysOptions />
+      <HolidaysForm />
     </>
   );
 };

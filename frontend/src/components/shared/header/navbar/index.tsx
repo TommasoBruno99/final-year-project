@@ -27,7 +27,10 @@ const NavBar = ({ toggle, isLoggedIn, logout }: props) => {
           {!isLoggedIn ? (
             <NavBarElement to="/"> LOGIN </NavBarElement>
           ) : (
-            <NavBarElementClick onClick={logout}>LOGOUT</NavBarElementClick>
+            <>
+              <NavBarElement to="/my-schedules"> MY SCHEDULES </NavBarElement>
+              <NavBarElementClick onClick={logout}>LOGOUT</NavBarElementClick>
+            </>
           )}
         </NavBarElementsWrapper>
         <NavBarFa onClick={toggle} data-testid="navbar-fa">

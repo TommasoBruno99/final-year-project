@@ -11,6 +11,8 @@ export const createScheduleController = async (
     const user_id: number = req.body.user_id;
     const schedule: Schedule = req.body.schedule;
 
+    console.log(req.body);
+
     const result = await createScheduleService(user_id, schedule);
 
     if (result.success) res.json(result);

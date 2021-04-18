@@ -7,4 +7,5 @@ export enum API_ENDPOINTS {
 
   GET_SCHEDULES_BY_USER = "/user/:id",
   ADD_SCHEDULE = "/",
+  GET_ALL_SCHEDULES = "/all",
 }

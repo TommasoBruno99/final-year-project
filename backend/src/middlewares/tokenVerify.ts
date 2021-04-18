@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import jweb from "jsonwebtoken";
-import { User } from "../utils/interfaces/auth";
 
 export const tokenVerify = async (
   req: Request,
@@ -17,14 +16,8 @@ export const tokenVerify = async (
         process.env.JSON_TOKEN as jweb.Secret
       );
 
-      const id = parseInt(req.params.id);
-
-      // Check if id sent as params is the same as the token decoded
-
       if (isVerified) {
-        const decoded = (await jweb.decode(token as string)) as User;
-        if (decoded.id === id) next();
-        else throw new Error("Unable to verify");
+        next();
       } else throw new Error("Unable to verify");
     } catch (e) {
       res.statusCode = 401;

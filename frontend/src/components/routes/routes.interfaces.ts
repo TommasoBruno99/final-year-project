@@ -5,3 +5,7 @@ export interface IRoute {
   render?: () => React.ReactNode;
   isLoggedIn: boolean;
 }
+
+export interface IAdminRoute extends IRoute {
+  role: string;
+}
