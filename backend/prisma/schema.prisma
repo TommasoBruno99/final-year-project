@@ -17,6 +17,12 @@ enum Seniority {
   SENIOR
 }
 
+enum Status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model User {
   @@map("user")
   id Int @default(autoincrement()) @id
@@ -53,6 +59,7 @@ model Schedule {
   endingMonth Int
   endingYear Int
   reason String @db.VarChar(255)
+  status Status @default(PENDING)
   user User @relation(fields: [user_id], references: [id])
   user_id Int
 }
