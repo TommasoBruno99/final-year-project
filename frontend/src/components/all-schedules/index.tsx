@@ -1,10 +1,12 @@
 import React from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+import { queryClient } from "../../app";
 import { useAuth } from "../../hooks";
 import {
   fetchSchedulesAdmin,
   response,
 } from "../../store/actions/schedules/fetchSchedules";
+import { updateScheduleStatus } from "../../store/actions/schedules/updateScheduleStatus";
 import {
   SchedulesWrapper,
   ScheduleContainer,
@@ -22,14 +24,21 @@ const AllSchedules: React.FC = () => {
     () => fetchSchedulesAdmin(state.user!.team_id, state.access_token)
   );
 
-  const updateScheduleStatus = (
+  const mutation = useMutation(updateScheduleStatus, {
+    onSuccess: () => {
+      queryClient.refetchQueries(["my-schedules", "admin-schedules"], {
+        active: true,
+      });
+    },
+  });
+
+  const updateStatus = (
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     status: string,
     id: string
   ) => {
     evt.preventDefault();
-
-    console.log(status + " changed for id: " + id);
+    mutation.mutate({ schedule_id: id, status, state });
   };
 
   return (
@@ -37,49 +46,51 @@ const AllSchedules: React.FC = () => {
       {data
         ? data.map((user) =>
             user.schedules.length > 0
-              ? user.schedules.map((schedule) => (
-                  <ScheduleContainer key={schedule.id}>
-                    {schedule.reason + " // "}
-                    {user.firstName + " " + user.lastName}
-                    <ScheduleDates>
-                      <ScheduleDate>
-                        {schedule.startingDay +
-                          "/" +
-                          schedule.startingMonth +
-                          "/" +
-                          schedule.startingYear +
-                          " "}
-                      </ScheduleDate>
-                      <span> - </span>
-                      <ScheduleDate>
-                        {schedule.endingDay +
-                          "/" +
-                          schedule.endingMonth +
-                          "/" +
-                          schedule.endingYear}
-                      </ScheduleDate>
-                    </ScheduleDates>
-                    <ButtonWrapper>
-                      <Button
-                        value="Approve"
-                        onClick={(evt) =>
-                          updateScheduleStatus(evt, "approve", schedule.id)
-                        }
-                      >
-                        Approve
-                      </Button>
-                      <Button
-                        value="Reject"
-                        onClick={(evt) =>
-                          updateScheduleStatus(evt, "reject", schedule.id)
-                        }
-                      >
-                        {" "}
-                        Reject{" "}
-                      </Button>
-                    </ButtonWrapper>
-                  </ScheduleContainer>
-                ))
+              ? user.schedules.map((schedule) =>
+                  schedule.status !== "APPROVED" ? (
+                    <ScheduleContainer key={schedule.id}>
+                      {schedule.reason + " // "}
+                      {user.firstName + " " + user.lastName}
+                      <ScheduleDates>
+                        <ScheduleDate>
+                          {schedule.startingDay +
+                            "/" +
+                            schedule.startingMonth +
+                            "/" +
+                            schedule.startingYear +
+                            " "}
+                        </ScheduleDate>
+                        <span> - </span>
+                        <ScheduleDate>
+                          {schedule.endingDay +
+                            "/" +
+                            schedule.endingMonth +
+                            "/" +
+                            schedule.endingYear}
+                        </ScheduleDate>
+                      </ScheduleDates>
+                      <ButtonWrapper>
+                        <Button
+                          value="Approve"
+                          onClick={(evt) =>
+                            updateStatus(evt, "APPROVED", schedule.id)
+                          }
+                        >
+                          Approve
+                        </Button>
+                        <Button
+                          value="Reject"
+                          onClick={(evt) =>
+                            updateStatus(evt, "REJECTED", schedule.id)
+                          }
+                        >
+                          {" "}
+                          Reject{" "}
+                        </Button>
+                      </ButtonWrapper>
+                    </ScheduleContainer>
+                  ) : null
+                )
               : "No schedules found"
           )
         : "No user found, contact the database administrators to add employee"}

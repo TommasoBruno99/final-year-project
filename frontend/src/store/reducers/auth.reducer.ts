@@ -27,8 +27,6 @@ const authReducer = (state: IState, action: authActions) => {
         user: Object.assign(action.payload.user),
         isLoggedIn: true,
         access_token: action.payload.access_token,
-        error: "",
-        isLoading: false,
       };
     case "loading":
       return {

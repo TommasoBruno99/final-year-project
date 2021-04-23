@@ -25,7 +25,7 @@ export const fetchSchedules = async (id: string, token: string) => {
   } catch (e) {
     throw new Error(e.message);
   }
-  return schedules;
+  return schedules.filter((schedule) => schedule.status !== "REJECTED");
 };
 
 export const fetchSchedulesAdmin = async (team: number, token: string) => {
@@ -43,5 +43,13 @@ export const fetchSchedulesAdmin = async (team: number, token: string) => {
     console.log(e.message);
   }
 
-  return res;
+  console.log(
+    res.filter((result) =>
+      result.schedules.filter((el) => el.status !== "APPROVED")
+    )
+  );
+
+  return res.filter((result) =>
+    result.schedules.filter((el) => el.status !== "APPROVED")
+  );
 };

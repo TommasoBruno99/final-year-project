@@ -23,11 +23,16 @@ const Form = () => {
     logAuth({ email, password }, setEmail, setPassword, dispatch);
   };
 
+  const erroStyle = {
+    color: "red",
+  };
+
   return (
     <FormContainer method="post" onSubmit={handleSubmit}>
       <FormInner>
         <FormInputsInner>
           <FormTitle> LOGIN </FormTitle>
+          {state.error ? <p style={erroStyle}> {state.error}</p> : null}
           <FormInnerBox marginBottom="1.5em">
             <FormLabel> EMAIL </FormLabel>
             <FormInput

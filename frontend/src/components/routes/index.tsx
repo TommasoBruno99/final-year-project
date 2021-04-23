@@ -2,7 +2,6 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
-import Error from "../shared/error";
 import { LoginPage, HomePage, ProfilePage } from "../../pages";
 import { useAuth } from "../../hooks";
 import MySchedulePage from "../../pages/my-schedules/my-schedule";
@@ -11,7 +10,7 @@ import RequestedHolidays from "../../pages/requested-holidays/requested-holidays
 
 export const Routes = () => {
   const {
-    state: { error, isLoggedIn, user },
+    state: { isLoggedIn, user },
   } = useAuth();
   return (
     <Switch>
@@ -38,7 +37,6 @@ export const Routes = () => {
       >
         <RequestedHolidays />
       </AdminRoute>
-      <Error error={error} />
     </Switch>
   );
 };
