@@ -48,6 +48,7 @@ const MySchedules: React.FC = () => {
                     schedule.endingYear}
                 </ScheduleDate>
               </ScheduleDates>
+              {schedule.status}
             </ScheduleContainer>
           ))
         : "No schedule available"}

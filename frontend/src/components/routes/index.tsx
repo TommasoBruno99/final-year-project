@@ -7,6 +7,7 @@ import { useAuth } from "../../hooks";
 import MySchedulePage from "../../pages/my-schedules/my-schedule";
 import AdminRoute from "./AdminRoute";
 import RequestedHolidays from "../../pages/requested-holidays/requested-holidays";
+import UserProfilePage from "../../pages/userProfile/userProfile";
 
 export const Routes = () => {
   const {
@@ -37,6 +38,9 @@ export const Routes = () => {
       >
         <RequestedHolidays />
       </AdminRoute>
+      <PrivateRoute exact={false} path="/profile/:id" isLoggedIn={isLoggedIn}>
+        <UserProfilePage />
+      </PrivateRoute>
     </Switch>
   );
 };

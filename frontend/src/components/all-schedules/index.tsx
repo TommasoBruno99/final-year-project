@@ -26,7 +26,7 @@ const AllSchedules: React.FC = () => {
 
   const mutation = useMutation(updateScheduleStatus, {
     onSuccess: () => {
-      queryClient.refetchQueries(["my-schedules", "admin-schedules"], {
+      queryClient.refetchQueries(["admin-schedules"], {
         active: true,
       });
     },
@@ -47,10 +47,15 @@ const AllSchedules: React.FC = () => {
         ? data.map((user) =>
             user.schedules.length > 0
               ? user.schedules.map((schedule) =>
-                  schedule.status !== "APPROVED" ? (
+                  schedule.status === "PENDING" ? (
                     <ScheduleContainer key={schedule.id}>
                       {schedule.reason + " // "}
-                      {user.firstName + " " + user.lastName}
+                      {user.firstName +
+                        " " +
+                        user.lastName +
+                        " (" +
+                        user.seniority +
+                        " )"}
                       <ScheduleDates>
                         <ScheduleDate>
                           {schedule.startingDay +
@@ -93,7 +98,7 @@ const AllSchedules: React.FC = () => {
                 )
               : "No schedules found"
           )
-        : "No user found, contact the database administrators to add employee"}
+        : "No user found, contact the database administrators to add an employee"}
     </SchedulesWrapper>
   );
 };

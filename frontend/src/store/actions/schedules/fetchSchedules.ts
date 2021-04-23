@@ -7,6 +7,7 @@ import { Schedule } from "../../context/schedules/schedules.context.interfaces";
 export interface response {
   firstName: string;
   lastName: string;
+  seniority: string;
   schedules: Schedule[];
 }
 
@@ -25,7 +26,7 @@ export const fetchSchedules = async (id: string, token: string) => {
   } catch (e) {
     throw new Error(e.message);
   }
-  return schedules.filter((schedule) => schedule.status !== "REJECTED");
+  return schedules;
 };
 
 export const fetchSchedulesAdmin = async (team: number, token: string) => {
