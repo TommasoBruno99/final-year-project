@@ -1,5 +1,9 @@
 import { IUser } from "../../context/auth/auth.context.interfaces";
 
+export enum Role {
+  ADMIN,
+  USER,
+}
 interface authLogin {
   readonly type: "login";
   readonly payload: {
@@ -11,6 +15,8 @@ interface authLogin {
       isAdmin: string;
       lastLogin: Date;
       email: string;
+      role: Role;
+      team_id: number;
     };
   }; // token
 }

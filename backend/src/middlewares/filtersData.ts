@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import Joi from "joi";
 import joi from "joi";
 import { User } from "../utils/interfaces/auth";
 
@@ -19,6 +20,10 @@ export const filterRegister = async (
     lastName: joi.string().min(4).max(40).required(),
 
     password: joi.string().pattern(new RegExp("^[a-zA-Z0-9]{8,}$")).required(),
+
+    role: Joi.string(),
+
+    team_id: joi.number(),
   });
 
   try {

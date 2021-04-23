@@ -27,7 +27,13 @@ const SideBar = ({ isToggled, toggle, isLoggedIn, logout }: props) => {
           {!isLoggedIn ? (
             <SideBarElement to="/login"> Login </SideBarElement>
           ) : (
-            <SideBarElementClick onClick={logout}>Logout</SideBarElementClick>
+            <>
+              <SideBarElementClick onClick={logout}>Logout</SideBarElementClick>
+              <SideBarElement to="/my-schedules" onClick={toggle}>
+                {" "}
+                My Schedules{" "}
+              </SideBarElement>
+            </>
           )}
         </SideBarWrapper>
       </SideBarInner>

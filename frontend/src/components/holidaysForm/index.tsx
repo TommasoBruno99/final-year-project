@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { ADD_SCHEDULE_API } from "../../constants/api";
+import { useMutation } from "react-query";
 import { useAuth } from "../../hooks";
+import { addSchedule } from "../../store/actions/schedules/addSchedule";
+import { Schedule } from "../../store/context/schedules/schedules.context.interfaces";
+import { queryClient } from "../../app";
 import {
   HolidayForm,
   HolidayFormInput,
@@ -21,41 +24,30 @@ const HolidaysForm: React.FC = () => {
   const [endYear, setEndYear] = useState("");
   const [reason, setReason] = useState("");
 
+  const mutation = useMutation(addSchedule, {
+    onSuccess: () => {
+      queryClient.refetchQueries(["my-schedules"], { active: true });
+    },
+  });
+
   const submitSchedule = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const schedule = {
-        startingDay: parseInt(startDay),
-        startingMonth: parseInt(startMonth),
-        startingYear: parseInt(startYear),
-        endingDay: parseInt(endDay),
-        endingMonth: parseInt(endMonth),
-        endingYear: parseInt(endYear),
-        reason: reason,
-      };
-
-      await fetch(ADD_SCHEDULE_API, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authentication: state.access_token,
-        },
-        body: JSON.stringify({
-          user_id: state.user!.id,
-          schedule: schedule,
-        }),
-      });
-    } catch (e) {
-      console.log(e.message);
-    } finally {
-      setStartDay("");
-      setStartMonth("");
-      setStartYear("");
-      setEndDay("");
-      setEndMonth("");
-      setEndYear("");
-      setReason("");
-    }
+    const schedule = {
+      startingDay: parseInt(startDay),
+      startingMonth: parseInt(startMonth),
+      startingYear: parseInt(startYear),
+      endingDay: parseInt(endDay),
+      endingMonth: parseInt(endMonth),
+      endingYear: parseInt(endYear),
+      reason: reason,
+    } as Schedule;
+    mutation.mutate({ schedule, state });
+    setStartDay("");
+    setStartMonth("");
+    setStartYear("");
+    setEndDay("");
+    setEndMonth("");
+    setEndYear("");
   };
 
   return (

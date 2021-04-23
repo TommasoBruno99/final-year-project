@@ -1,13 +1,18 @@
-import { GET_SCHEDULE_OF_USER } from "../../../constants/api";
+import {
+  GET_ALL_SCHEDULES,
+  GET_SCHEDULE_OF_USER,
+} from "../../../constants/api";
 import { Schedule } from "../../context/schedules/schedules.context.interfaces";
 
-export const fetchSchedules = async (
-  id: string,
-  token: string,
-  setSchedules: React.Dispatch<React.SetStateAction<Schedule[]>>
-) => {
+export interface response {
+  firstName: string;
+  lastName: string;
+  schedules: Schedule[];
+}
+
+export const fetchSchedules = async (id: string, token: string) => {
+  let schedules: Schedule[] = [];
   try {
-    console.log(GET_SCHEDULE_OF_USER + id);
     await fetch(GET_SCHEDULE_OF_USER + id, {
       headers: {
         authentication: token,
@@ -15,9 +20,28 @@ export const fetchSchedules = async (
     })
       .then((res) => res.json())
       .then((data) => {
-        setSchedules(data.schedules);
+        schedules = data.schedules;
       });
+  } catch (e) {
+    throw new Error(e.message);
+  }
+  return schedules;
+};
+
+export const fetchSchedulesAdmin = async (team: number, token: string) => {
+  let res: response[] = [];
+
+  try {
+    await fetch(GET_ALL_SCHEDULES + team, {
+      headers: {
+        authentication: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((result_two) => (res = result_two.result));
   } catch (e) {
     console.log(e.message);
   }
+
+  return res;
 };

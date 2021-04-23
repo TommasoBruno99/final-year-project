@@ -19,6 +19,7 @@ export const loginService = async (loginUser: User): Promise<LoginResponse> => {
           lastName: resultQuery.lastName,
           email: resultQuery.email,
           role: resultQuery.role,
+          team_id: resultQuery.team_id,
           seniority: resultQuery.seniority,
           updatedAt: resultQuery.updatedAt,
         } as User;

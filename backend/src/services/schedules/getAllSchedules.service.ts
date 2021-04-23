@@ -2,11 +2,14 @@ import { Role } from ".prisma/client";
 import { prisma } from "../../";
 import { allScheduleResponse } from "../../utils/interfaces/schedules";
 
-export const getAllSchedulesService = async (): Promise<allScheduleResponse> => {
+export const getAllSchedulesService = async (
+  teamAdmin: number
+): Promise<allScheduleResponse> => {
   try {
     const result = await prisma.user.findMany({
       where: {
         role: Role.USER,
+        team_id: teamAdmin,
       },
       include: {
         schedules: true,

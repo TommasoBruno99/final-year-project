@@ -34,7 +34,7 @@ export const Routes = () => {
         exact
         path="/requested-schedules"
         isLoggedIn={isLoggedIn}
-        role={user!.role}
+        role={user?.role || "none"}
       >
         <RequestedHolidays />
       </AdminRoute>

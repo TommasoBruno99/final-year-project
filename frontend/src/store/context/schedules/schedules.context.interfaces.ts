@@ -17,3 +17,11 @@ export interface IScheduleContext {
   schedules: Schedule[];
   setSchedules: React.Dispatch<React.SetStateAction<Schedule[]>>;
 }
+
+export type User = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  seniority: string;
+  role: string;
+};

@@ -16,6 +16,7 @@ export interface User {
   email: string;
   password: string;
   role: Role;
+  team_id: number;
   seniority: Seniority;
   createdAt: Date;
   updatedAt: Date;

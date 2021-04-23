@@ -58,6 +58,7 @@ export const NavBarElement = styled(Link)`
   color: #fff;
   text-decoration: none;
   font-size: 1rem;
+  margin-right: 1em;
 
   &:active {
     border-bottom-color: red;

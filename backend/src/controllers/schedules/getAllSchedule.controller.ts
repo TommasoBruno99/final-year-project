@@ -6,8 +6,9 @@ export const getAllSchedulesController = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
+  const team_id = req.params.team;
   try {
-    const result = await getAllSchedulesService();
+    const result = await getAllSchedulesService(parseInt(team_id));
 
     if (result.success) res.json(result);
     else throw new Error(result.error);

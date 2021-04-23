@@ -9,6 +9,7 @@ import {
   NavBarElementClick,
 } from "./navbar.styled";
 import { FaBars } from "react-icons/fa";
+import { useAuth } from "../../../../hooks";
 
 type props = {
   toggle: (e: React.MouseEvent<HTMLElement>) => void;
@@ -17,6 +18,8 @@ type props = {
 };
 
 const NavBar = ({ toggle, isLoggedIn, logout }: props) => {
+  const { state } = useAuth();
+
   return (
     <NavBarContainer>
       <NavBarInner>
@@ -29,6 +32,12 @@ const NavBar = ({ toggle, isLoggedIn, logout }: props) => {
           ) : (
             <>
               <NavBarElement to="/my-schedules"> MY SCHEDULES </NavBarElement>
+              {state.user!.role === "ADMIN" ? (
+                <NavBarElement to="/requested-schedules">
+                  {" "}
+                  EMPLOYEE SCHEDULES{" "}
+                </NavBarElement>
+              ) : null}
               <NavBarElementClick onClick={logout}>LOGOUT</NavBarElementClick>
             </>
           )}
