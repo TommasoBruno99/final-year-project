@@ -23,7 +23,7 @@ export const ScheduleContainer = styled.div`
 export const ScheduleDates = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export const ScheduleDate = styled.p`
@@ -31,4 +31,21 @@ export const ScheduleDate = styled.p`
   font-weight: 600;
   color: black;
   margin-left: 0.2em;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Button = styled.button`
+  padding: 1em;
+  background: darkgray;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 80%;
+  }
 `;

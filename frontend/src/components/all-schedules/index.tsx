@@ -10,6 +10,8 @@ import {
   ScheduleContainer,
   ScheduleDate,
   ScheduleDates,
+  Button,
+  ButtonWrapper,
 } from "./allSchedules.styled";
 
 const AllSchedules: React.FC = () => {
@@ -19,6 +21,16 @@ const AllSchedules: React.FC = () => {
     ["admin-schedules", state.user!.team_id, state.access_token],
     () => fetchSchedulesAdmin(state.user!.team_id, state.access_token)
   );
+
+  const updateScheduleStatus = (
+    evt: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    status: string,
+    id: string
+  ) => {
+    evt.preventDefault();
+
+    console.log(status + " changed for id: " + id);
+  };
 
   return (
     <SchedulesWrapper>
@@ -47,6 +59,25 @@ const AllSchedules: React.FC = () => {
                           schedule.endingYear}
                       </ScheduleDate>
                     </ScheduleDates>
+                    <ButtonWrapper>
+                      <Button
+                        value="Approve"
+                        onClick={(evt) =>
+                          updateScheduleStatus(evt, "approve", schedule.id)
+                        }
+                      >
+                        Approve
+                      </Button>
+                      <Button
+                        value="Reject"
+                        onClick={(evt) =>
+                          updateScheduleStatus(evt, "reject", schedule.id)
+                        }
+                      >
+                        {" "}
+                        Reject{" "}
+                      </Button>
+                    </ButtonWrapper>
                   </ScheduleContainer>
                 ))
               : "No schedules found"

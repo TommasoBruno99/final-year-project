@@ -28,7 +28,7 @@ const MySchedules: React.FC = () => {
     <SchedulesWrapper>
       {data
         ? data!.map((schedule, idx) => (
-            <ScheduleContainer key={idx}>
+            <ScheduleContainer key={idx} status={schedule.status}>
               {schedule.reason}
               <ScheduleDates>
                 <ScheduleDate>

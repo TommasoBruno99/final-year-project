@@ -10,7 +10,7 @@ export const SchedulesWrapper = styled.div`
   justify-content: center;
 `;
 
-export const ScheduleContainer = styled.div`
+export const ScheduleContainer = styled.div<{ status: string }>`
   width: 100%;
   padding: 1em;
   background: white;
@@ -18,6 +18,12 @@ export const ScheduleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: ${({ status }) =>
+    status === "PENDING" ? "orange" : status === "APPROVED" ? "green" : "red"};
+
+  @media screen and (min-width: 780px) {
+    flex-direction: row;
+  }
 `;
 
 export const ScheduleDates = styled.div`

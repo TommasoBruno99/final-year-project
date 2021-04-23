@@ -3,8 +3,9 @@ import { API_ENDPOINTS } from "../constants/routes";
 import {
   createScheduleController,
   getSchedulesOfUserController,
+  updateScheduleStatusController,
+  getAllSchedulesController,
 } from "../controllers";
-import { getAllSchedulesController } from "../controllers/schedules/getAllSchedule.controller";
 import { tokenVerify } from "../middlewares/tokenVerify";
 
 const scheduleRouter: Router = Router();
@@ -24,5 +25,9 @@ scheduleRouter.post(
   tokenVerify,
   createScheduleController
 );
-
+scheduleRouter.put(
+  API_ENDPOINTS.UPDATE_SCHEDULE_STATUS,
+  tokenVerify,
+  updateScheduleStatusController
+);
 export default scheduleRouter;

@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import { useAuth } from "../../../../hooks";
 import {
   SideBarContainer,
   SideBarInner,
@@ -17,6 +18,7 @@ type props = {
 };
 
 const SideBar = ({ isToggled, toggle, isLoggedIn, logout }: props) => {
+  const { state } = useAuth();
   return (
     <SideBarContainer isToggled={isToggled} data-testid="sidebar-container">
       <SideBarClose onClick={toggle} data-testid="sidebar-icon">
@@ -30,9 +32,13 @@ const SideBar = ({ isToggled, toggle, isLoggedIn, logout }: props) => {
             <>
               <SideBarElementClick onClick={logout}>Logout</SideBarElementClick>
               <SideBarElement to="/my-schedules" onClick={toggle}>
-                {" "}
-                My Schedules{" "}
+                My Schedules
               </SideBarElement>
+              {state.user?.role === "ADMIN" ? (
+                <SideBarElement to="/requested-schedules" onClick={toggle}>
+                  Employee Schedules
+                </SideBarElement>
+              ) : null}
             </>
           )}
         </SideBarWrapper>

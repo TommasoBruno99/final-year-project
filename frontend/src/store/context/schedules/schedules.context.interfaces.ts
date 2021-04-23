@@ -6,6 +6,7 @@ export interface Schedule {
   endingDay: number;
   endingMonth: number;
   endingYear: number;
+  status: string;
   reason: string;
 }
 
