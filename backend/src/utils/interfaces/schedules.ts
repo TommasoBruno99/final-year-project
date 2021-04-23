@@ -1,5 +1,10 @@
 import { User } from ".prisma/client";
 
+enum Status {
+  PENDING,
+  APPROVED,
+  REJECTED,
+}
 export interface Schedule {
   startingDay: number;
   startingMonth: number;
@@ -7,6 +12,7 @@ export interface Schedule {
   endingDay: number;
   endingMonth: number;
   endingYear: number;
+  status: string;
   reason: string;
 }
 
